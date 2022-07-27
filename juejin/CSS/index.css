@@ -1,0 +1,13 @@
+.top-bar-wrapper{
+    width: 100%;
+    height: 61px;
+    background-color: #fff;
+}
+
+.top-bar{
+    margin: 0 auto;
+}
+
+.top-logo{
+    margin-left: 24px;
+}
