@@ -1,0 +1,11 @@
+.clearfix::before,
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+a{
+    text-decoration: none;
+}
+
