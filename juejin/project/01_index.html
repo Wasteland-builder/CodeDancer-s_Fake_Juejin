@@ -1,120 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>掘金 - 代码不止，掘金不停</title>
+    <title>掘金</title>
+    <!-- 设置网页的图标 -->
+    <link rel="icon" href="../img/favicon.ico">
+    <!-- 引入重置样式表 -->
     <link rel="stylesheet" href="../CSS/reset.css">
-    <link rel="stylesheet" href="../fontawesome/css/all.css">
-    <link rel="stylesheet" href="../CSS/base.css">
+    <!-- 引入图标字体 -->
+    <link rel="stylesheet" href="../fontawesome/all.css">
+    <!-- 引入CSS文件 -->
     <link rel="stylesheet" href="../CSS/index.css">
 </head>
-<body>
-    <div class="box">
-        <div class="top-bar-wrapper">
-            <div class="top-bar">
-                <div class="top-logo">
-                    <a href="https://juejin.cn/">
-                        <img src="../img/logo.svg">
-                    </a>
-                </div>
 
-                <nav class="top-nav">
-                    <ul class="top-ul">
-                        <li class="top-list">
-                            <ul class="top-choose">
-                                <li>
-                                    <a href="https://juejin.cn/">首页</a>
+<body>
+    <div class="top-bar-wrapper">
+        <div class="top-bar">
+            <a class="logo" href="https://juejin.cn/">
+                <img src="../img/logo.svg">
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="left-nav-list">
+                        <ul class="list">
+                            <li>
+                                <a href="https://juejin.cn/">首页</a>
+                            </li>
+                            <li>
+                                <a href="https://juejin.cn/pins">沸点</a>
+                            </li>
+                            <li>
+                                <a href="https://juejin.cn/course">课程</a>
+                            </li>
+                            <li>
+                                <a href="https://juejin.cn/live">直播</a>
+                            </li>
+                            <li>
+                                <a href="https://juejin.cn/events/all">活动</a>
+                            </li>
+                            <nav>
+                                <a href="https://detail.youzan.com/show/goods/newest?kdt_id=104340304" target="_blank">商城</a>
+                            </nav>
+                            <nav>
+                                <a href="https://juejin.cn/app?utm_source=jj_nav" target="_blank">APP</a>
+                            </nav>
+                            <nav>
+                                <a href="https://juejin.cn/extension?utm_source=jj_nav" target="_blank">插件</a>
+                            </nav>
+                        </ul>
+                    </li>
+
+                    <ul class="right-nav-list">
+                        <li class="search-add">
+                            <ul class="search-add-ul">
+                                <li class="search">
+                                    <form action="" class="search-form">
+                                        <input type="search" maxlength="32" placeholder="探索稀土掘金" value class="search-input">
+                                        <div class="search-icon-wrapper">
+                                            <img src="../img/search.svg" alt="搜索" class="search-icon">
+                                        </div>
+                                    </form>
                                 </li>
-                                <li>
-                                    <a href="https://juejin.cn/pins">沸点</a>
+
+                                <li class="creator-item">
+                                    <div class="add-group">
+                                        <button class="add-btn">创作者中心</button>
+                                        <div class="more">
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                                <path fill: white;>                                                 
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <ul class="more-list">
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li>
-                                    <a href="https://juejin.cn/course">课程</a>
-                                </li>
-                                <li>
-                                    <a href="https://juejin.cn/live">直播</a>
-                                </li>
-                                <li>
-                                    <a href="https://juejin.cn/news">资讯</a>
-                                </li>
-                                <li>
-                                    <a href="https://juejin.cn/events/all">活动</a>
-                                </li>
-                                <nav>
-                                    <a href=""></a>
-                                </nav>
-                                <nav>
-                                    <a href=""></a>
-                                    <span>商城</span>
-                                </nav>
-                                <nav>
-                                    <a href=""></a>
-                                    <span>APP</span>
-                                </nav>
-                                <nav>
-                                    <a href=""></a>
-                                    <span>插件</span>
-                                </nav>
                             </ul>
                         </li>
 
-                        <ul class="top-right-side">
-                            <li>
-                                <ul>
-                                    <li>
-                                        <form action="#">
-                                            <input type="search">
-                                            <div>
-                                                <img src="" alt="">
-                                            </div>
-                                        </form>
-                                    </li>
-                                    <li></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <div>
-                                    <img src="" alt="">
-                                    <div></div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href=""></a>
-                            </li>
-                            <li>
-                                <div>
-                                    <img src="" alt="">
-                                </div>
-                            </li>
-                        </ul>
+                        <li class="vip">
+                            <div class="vip-title">
+                                <img src="../img/vip.svg" alt="vip" class="vip-img">
+                                <div class="vip-word">会员</div>
+                            </div>
+                        </li>
+
+                        <li class="notice">
+                            <a href="notice-img">
+                                <i class="fas fa-bell"></i>
+                            </a>
+                        </li>
+
+                        <li></li>
                     </ul>
-                </nav>
-
-
-            </div>
+                </ul>
+            </nav>
         </div>
-
-        <div class="label-list">
-            <ul class="label-container">
-                <li><a href="https://juejin.cn/recommended">综合</a></li>
-                <li><a href="https://juejin.cn/following">关注</a></li>
-                <li><a href="https://juejin.cn/backend">后端</a></li>
-                <li><a href="https://juejin.cn/frontend">前端</a></li>
-                <li><a href="https://juejin.cn/android"></a>Android</li>
-                <li><a href="https://juejin.cn/ios">iOS</a></li>
-                <li><a href="https://juejin.cn/ai">人工智能</a></li>
-                <li><a href="https://juejin.cn/freebie">开发工具</a></li>
-                <li><a href="https://juejin.cn/career">代码人生</a></li>
-                <li><a href="https://juejin.cn/article">阅读</a></li>
-            </ul>
-            <div class="label-manage">
-                <a href="https://juejin.cn/subscribe/subscribed">标签管理</a>
-            </div>
-        </div>
-
-        
-    </div>
 </body>
+
 </html>
