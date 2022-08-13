@@ -9,7 +9,7 @@
 
 <template>
 <top-cpn></top-cpn>
-<aside-label-board></aside-label-board>
+<!-- <aside-label-board></aside-label-board> -->
 <router-view></router-view>
 </template>
 
