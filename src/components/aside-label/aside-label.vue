@@ -58,11 +58,11 @@ export default {
                     break;
                 }}
                 case 1 :{if(status) {
-                    this.data.thumbUp--;
+                    this.data.thumbUp= this.data.thumbUp-1;
                     this.data.thumbUpActive=false;
                     break;
                 } else{
-                    this.data.thumbUp++;
+                      this.data.thumbUp=this.data.thumbUp+1;
                     this.data.thumbUpActive=true;
                     break;
                 }}

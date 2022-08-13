@@ -2,9 +2,36 @@
     <div class="content-container">
   
         <div class="content-header">
-                   <div class="content-author">
+                          <!-- 头像框 -->
+               <el-popover placement="top" :width="240" trigger="hover">
+                <div  class="content-header-pop" > 
+                    <div class="pop-header">
+                        <el-avatar :size="50" src="https://empty" rel="external nofollow"  @error="errorHandler">
+                          <img
+                            src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png" rel="external nofollow" 
+                                />
+                           </el-avatar>
+                     </div>
+                    <div  class="pop-button" style="text-align: center; width:100%; margin: 0">
+                      <el-button size="large" type="primary" @click="visible = false">关注</el-button>
+                    </div>
+                    <div class ="pop-info">
+                          <div  class ="pop-info-left">
+                              <p>64</p>
+                              <p>关注</p>
+                          </div>
+                            <div class ="pop-info-right">
+                               <p>44</p>
+                              <p>粉丝</p>
+                          </div>
+                    </div>
+               </div>
+                <template #reference>
+                  <el-affix class="content-author">
                      {{this.contentdata.author}}
-                  </div>  
+                   </el-affix>  
+                </template>
+              </el-popover>
                   <div class="content-daycounter">
                     {{computerTime()}}
                  </div>  
@@ -12,7 +39,6 @@
    
              <div class="content-main">
                 <div :class="mainerMainCss(this.contentdata.imgsrc)" >
-                   <!-- <div class="content-mainer-title"> -->
                   <div :class="mainerTitleCss(this.contentdata.status)">
                     {{this.contentdata.title}}
                  </div>  

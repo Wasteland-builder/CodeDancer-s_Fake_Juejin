@@ -1,28 +1,33 @@
 <template>
-        <div class="list-aside-reporting">
-            <div class="list-aside-border">
-                <div :class="this.listTimesCss" v-if="this.propsStateCheck()">{{this.thumbUpTime}}</div>
-                    <thumbUpIcon :class="this.listIconCss"/>
-            </div>
-        </div>
+        <div class="content-container-thumbup">
+                    <thumbUpIconSolid v-if="this.thumbUpActive" :class="this.listIconCss"/>
+                    <thumbUpIcon v-if="!this.thumbUpActive" :class="this.listIconCss"/>
+                     <div :class="this.listTimesCss" v-if="this.propsStateCheck(this.thumbUpState)">{{this.thumbUpTime}}</div>
+                     <div :class="this.listTimesCss" v-if="!this.propsStateCheck(this.thumbUpState)">点赞</div>
+       </div>            
 </template>
 <script>
-import thumbUpIcon from '@/assets/icons/thumbUp.svg'
+import thumbUpIcon from '@/assets/icons/thumbUpLight.svg'
+import thumbUpIconSolid from '@/assets/icons/thumbUp.svg'
 import { defineComponent} from 'vue'
     
 export default defineComponent({
     name: 'ListWarning',
     props:{
         thumbUpTimes:Number,
-        thumbUpState:Boolean,
+        thumbUpState:String,
         default:0
     },
     computed:{
       normalizedSize:()=>{
-        return this.thumbUpTimes.trim().toLowerCase()
+        return [
+                this.thumbUpTimes.trim().toLowerCase(),
+                 this.thumbUpState.trim().toLowerCase()
+        ]
+           
       },
       normalizedSize:()=>{
-        return this.thumbUpState.trim().toLowerCase()
+        return 
       }
     },
       watch:{
@@ -35,7 +40,7 @@ export default defineComponent({
         thumbUpState:{
             deep:true,
             handler(news){
-                this.thumbUpActive=news
+                this.thumbUpState=news
             }
         },
     },
@@ -45,114 +50,123 @@ export default defineComponent({
         }
     },
     components:{
-        thumbUpIcon
+        thumbUpIcon,
+        thumbUpIconSolid
     },
     data(){
         return{
-            thumbUpActive:this.thumbUpState,
+            thumbUpState:this.thumbUpState,
             thumbUpTime:this.thumbUpTimes,
+            thumbUpActive:false,
             listIconCss:'',
             listTimesCss:''
         }
     },
     methods:{
-       propsStateCheck(){
-            if (this.thumbUpTimes === 0){
-                this.listIconCss="list-aside-iconsvg-none",
-                this.listTimesCss=".list-aside-align-top"
+     propsStateCheck(e){
+        console.log(e)
+           switch(e){
+                    case '1':{
+                        this.thumbUpActive=false;
+                        this.listIconCss="content-container-iconsvg"
+                         this.listTimesCss="content-container-content" 
+                         break;
+                    }
+                    case '2':{
+                          this.thumbUpActive=false;
+                        this.listIconCss="content-container-iconsvg"
+                         this.listTimesCss="content-container-content"
+                          break;
+                    }
+                    case '3':{
+                         this.thumbUpActive=true;
+                        this.listIconCss="content-container-iconsvg-active"
+                         this.listTimesCss="content-container-content-active"
+                          break;
+                    }
+                    case '4':{
+                        this.thumbUpActive=true;
+                        this.listIconCss="content-container-iconsvg-active"  
+                         this.listTimesCss="content-container-content-active"
+                          break;
+                    }
+                }
+            if(this.thumbUpTime===0){
                 return false
-            }
-           else if(this.thumbUpActive){
-            this.listIconCss="list-aside-iconsvg-active"
-            this.listTimesCss="list-aside-align-top-active"
-            return true
-           }
-           this.listIconCss="list-aside-iconsvg"
-           this.listTimesCss="list-aside-align-top"
-           return true
+            }   
+            else   return true
         }
     }
 })
 </script>
 
 <style lang="less" scoped>
-.list-aside-reporting{
-    margin:2% 25%;
-     width:200px;
-     height:100px;
+.content-container-thumbup{
+     width:5rem;
+     height:2rem;
      display: flex;
-.list-aside-border{
-        margin:10% 5% 0 5%;
-        width:4rem;
-        height:4rem;
-        border-radius:50%;
-        background-color: #fff;
-       .list-aside-iconsvg-none{
-             padding: 30% 30% 30% 30%;
+     flex-flow: row;
+       .content-container-iconsvg-none{
+           margin:0 auto;
+           padding: 30% 30% 30% 30%;
             vertical-align: middle;
-            width:1.5rem;
-            height:1.5rem;
+           width:2rem;
+            height:2rem;
             fill: #8a919f;
-    
         }
-        .list-aside-iconsvg-none:hover {
-             padding: 25% 30% 25% 30%;
+        .content-container-iconsvg{
+            margin:0 auto;
+            padding:0 10% 24% 2%;
             vertical-align: middle;
-            width:1.8rem;
-            height:1.8rem;
-            fill: #515767;
-            }
-         .list-aside-iconsvg{
-             padding:0 30% 24% 30%;
-            vertical-align: middle;
-            width:1.5rem;
-            height:1.5rem;
+            width:2rem;
+            height:2rem;
             fill: #8a919f;
             float:left
         }
-        .list-aside-iconsvg:hover {
-         padding:0 30% 24% 30%;
+        .content-container-iconsvg:hover{
+            margin:0 auto;
+            padding:0 10% 24% 2%;
             vertical-align: middle;
-            width:1.8rem;
-            height:1.8rem;
-            fill: #515767;
-             float:left
-            }
-        .list-aside-align-top{
-            background:#c2c8d1;
-            color:#f4f5f5;
-            width:1.5rem;
-            height: 1.5rem;
-            border-radius: 0.9rem;
-            font-size:0.75rem;
-            flex-flow: right;
-            float:right;
-            text-align:center;
-        } 
-         .list-aside-iconsvg-active {
-            padding:0 30% 24% 30%;
-            vertical-align: middle;
-            width:1.8rem;
-            height:1.8rem;
+            width:2rem;
+            height:2rem;
             fill: #1e80ff;
+            float:left
+        }
+         .content-container-iconsvg-active {
+            margin:0 auto;
+            padding:0 10% 24% 2%;
+            vertical-align: middle;
+            width:2rem;
+            height:2rem;
+            fill: #1e80ff;
+            float:left
+            } 
+        .content-container-content{
+            margin:0 auto;
+            padding:0 10% 24% 2%;
+            vertical-align: middle;
+            width:2rem;
+            height:2rem;
+            color: #8a919f;
+            float:left
+        }
+        .content-container-content:hover {
+            margin:0 auto;
+              padding:0 10% 24% 2%;
+            vertical-align: middle;
+            width:2rem;
+            height:2rem;
+            color: #1e80ff;
              float:left
             }
-        .list-aside-align-top-active{
-            background:#1e80ff;
-            color:#f4f5f5;
-            width:1.5rem;
-            height: 1.5rem;
-            border-radius: 0.75rem;
-            font-size: 0.5rem;
-            flex-flow: right;
-            float:right;
-            text-align:center;
-        }   
-        
-     }
-     .list-aside-btn{
-        width:100px;
-        height:100px;
-     }
+         .content-container-content-active {
+            margin:0 auto;
+            padding:0 10% 24% 2%;
+            vertical-align: middle;
+            width:2rem;
+            height:2rem;
+            color: #1e80ff;
+            float:left
+            }           
 }
 </style>
