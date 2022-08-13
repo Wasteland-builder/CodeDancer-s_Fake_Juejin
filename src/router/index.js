@@ -10,7 +10,8 @@ const routes = [
             {
                 path: '/recommended',
                 name: 'RecView',
-                component: () => import(/* webpackChunkName: "RecView" */ '../views/home/recommended/RecView.vue')
+                component: () => import(/* webpackChunkName: "RecView" */ '../views/home/recommended/RecView.vue'),
+
             },
             {
                 path: '/following',

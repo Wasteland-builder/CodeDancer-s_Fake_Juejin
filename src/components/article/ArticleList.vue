@@ -9,8 +9,8 @@
 </template>
 
 <script setup>
-import CancelImg from '../RightCpn/CancelImg.vue';
-import DownloadApp from '../RightCpn/DownloadApp.vue';
+import CancelImg from '../right-cpn/CancelImg.vue';
+import DownloadApp from '../right-cpn/DownloadApp.vue';
 </script>
 
 <style scoped lang="less">
