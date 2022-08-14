@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import HomeView from '../views/home/HomeView.vue'
 
 const routes = [
@@ -93,11 +93,16 @@ const routes = [
         path: '/extension',
         name: 'ExtView',
         component: () => import(/* webpackChunkName: "ExtView" */ '../views/extension/ExtView.vue')
+    },
+    {
+        path: "/post/:id",
+        name: 'post',
+        component: () => import('../views/post/index.vue')
     }
 ]
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history:  createWebHistory(),
     routes
 })
 
