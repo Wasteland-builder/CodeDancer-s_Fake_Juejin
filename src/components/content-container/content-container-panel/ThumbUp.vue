@@ -64,7 +64,6 @@ export default defineComponent({
     },
     methods:{
      propsStateCheck(e){
-        console.log(e)
            switch(e){
                     case '1':{
                         this.thumbUpActive=false;

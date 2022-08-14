@@ -1,42 +1,56 @@
 <template>
-    <div class="content-container">
-  
-        <div class="content-header">
+    <div class="content-container" @mouseover="this.HandleHover()" @mouseout="HandleHover()">
+          <div class="content-header">
+              <div class="content-lefthead">
                           <!-- 头像框 -->
                <el-popover placement="top" :width="240" trigger="hover">
-                <div  class="content-header-pop" > 
+                 <div  class="content-header-pop" > 
                     <div class="pop-header">
-                        <el-avatar :size="50" src="https://empty" rel="external nofollow"  @error="errorHandler">
-                          <img
-                            src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png" rel="external nofollow" 
-                                />
-                           </el-avatar>
-                     </div>
+                        <div class="pop-header-avatar">
+                          <el-avatar :size="50" :src="this.avatar"   rel="external nofollow"  @error="errorHandler">
+                            <img
+                              :src="this.avatar" rel="external nofollow" 
+                                  />
+                            </el-avatar>
+                          </div>   
+                           <div class = "pop-header-profile">
+                                <p style="height:30%">{{this.author}}</p>
+                                <div style="height:70%" height>{{this.profiles}}</div>
+                           </div>
+                    </div>
+              
                     <div  class="pop-button" style="text-align: center; width:100%; margin: 0">
-                      <el-button size="large" type="primary" @click="visible = false">关注</el-button>
+                      <el-button   size="large" style="width:90%" type="primary" @click="visible = false">                   关注                         </el-button>
                     </div>
                     <div class ="pop-info">
-                          <div  class ="pop-info-left">
-                              <p>64</p>
+                          <div  class ="pop-info-left" >
+                              <p>{{this.focus}}</p>
                               <p>关注</p>
                           </div>
                             <div class ="pop-info-right">
-                               <p>44</p>
+                               <p>{{this.followers}}</p>
                               <p>粉丝</p>
                           </div>
                     </div>
-               </div>
+                </div> 
                 <template #reference>
                   <el-affix class="content-author">
                      {{this.contentdata.author}}
                    </el-affix>  
                 </template>
-              </el-popover>
+        </el-popover>
                   <div class="content-daycounter">
                     {{computerTime()}}
-                 </div>  
+                 </div>
+             </div>      
+         <div class="content-righthead">        
+                 <div class="content-close" v-if="this.onHandleHover">
+                      <ClosePanel :index="this.contentdata.index" 
+                                  :author="this.contentdata.author"
+                                  :target="[]"/>
+                 </div>
             </div> 
-   
+       </div>
              <div class="content-main">
                 <div :class="mainerMainCss(this.contentdata.imgsrc)" >
                   <div :class="mainerTitleCss(this.contentdata.status)">
@@ -52,27 +66,42 @@
          </div>
     </div>
 </template>
-<script>
+<script> 
+import  ClosePanel  from '../content-container-panel/Close.vue'
 import { defineComponent } from 'vue'
 export default defineComponent({
     name:"content-hotpot",
     props:{
+        index:Number,
         status:String,
         author:String,
         date:String,
         title:String,
         content:String,
         imgsrc:String,
+        focus:String,
+        followers:String,
+        profiles:String,
+        avatar:String
+   },
+   components:{
+    ClosePanel
    },
      computed:{
       normalizedSize:()=>{
         return (
-            [ this.status.trim().toLowerCase(),
+            [  this.index.trim().toLowerCase(),
+              this.status.trim().toLowerCase(),
               this.author.trim().toLowerCase(),
               this.date.trim().toLowerCase(),
               this.title.trim().toLowerCase(),
               this.content.trim().toLowerCase(),
-              this.imgsrc.trim().toLowerCase()]
+              this.imgsrc.trim().toLowerCase(),
+              this.focus.trim().toLowerCase(),
+              this.followers.trim().toLowerCase(),
+              this.profiles.trim().toLowerCase(),
+              this.avatar.trim().toLowerCase(),
+              ]
         )
          
       },
@@ -80,10 +109,16 @@ export default defineComponent({
     setup(){
     },
       watch:{
+        index:{
+            deep:true,
+            handler(news){
+                this.contentdata.index=news;
+            }
+        },
         status:{
             deep:true,
             handler(news){
-                this.contentdata.watch=news;
+                this.contentdata.status=news;
             }
         },
         author:{
@@ -109,16 +144,22 @@ export default defineComponent({
             handler(news){
                 this.contentdata.content=news
             },
+           },    
           imgsrc:{
             deep:true,
             handler(news){
                 this.contentdata.imgsrc=news
             }
             }
-        }
-
-    }, 
+        }, 
       methods:{
+        HandleHover(){
+        if(this.onHandleHover) setTimeout(()=>{
+          this.onHandleHover = false;
+        },30000)  
+        else if(!this.onHandleHover) this.onHandleHover = true;
+        },
+        
         computerTime(){
           let e = new Date(this.contentdata.date).getTime();
              let delta = (new Date().getTime() - e) / 1000;
@@ -136,22 +177,29 @@ export default defineComponent({
           if(src === "") return "content-mainer-npic" ; 
           else return "content-mainer" }
       },
+    
     data(){
         return{
+          onHandleHover:false,
           contentdata:{
+              index:this.index,
               status:this.status,
               author:this.author,
               date:this.date,
               title:this.title,
               content:this.content,
-              imgsrc:this.imgsrc
+              imgsrc:this.imgsrc,
+              focus:this.focus,
+              followers:this.followers,
+              profiles:this.profiles,
+              avatar:this.avatar
           }
         }
     }
 })
 </script>
 <style lang="less" scoped>
-    .content-container{
+   .content-container{
         height:10rem;
         width:60rem;
         background-color: #fff;
@@ -161,7 +209,12 @@ export default defineComponent({
         background-color: #fff;
         display: flex;
         flex-flow: row;
-              .content-author{
+        .content-lefthead{
+            width:80%;
+            height:100%;
+            display: flex;
+            flex-flow: row;
+           .content-author{
                 font-size:1.5rem;
                 padding:0% 2%; 
                 border-right: 1px solid #dedddd; 
@@ -185,6 +238,18 @@ export default defineComponent({
                 border-left: 1px solid #dedddd; 
                 height:60%
               }
+        }
+         .content-righthead {
+             width:20%; 
+            height:100%;
+            .content-close{
+                font-size:1rem;
+                padding:0% 0 0% 70% ; 
+                color:#8e99a2;  
+                flex-flow: right;
+                height:60%;
+              }
+         }  
         }
        .content-main{
         height:60%;
@@ -244,7 +309,7 @@ export default defineComponent({
                         overflow: hidden;
                     }
                     .content-mainer-title-read{
-                        height:45%;
+                        height:40%;
                         margin:2% 2%;
                         font-size:1.6rem;
                         font-weight:600;
@@ -270,24 +335,58 @@ export default defineComponent({
                       width:30%;
                     height:100%;
                     img{
-                      height:100%;
-                      width:60%;
+                      height:120%;
+                      width:70%;
                     }
                 }
         }
-       .content-footer{
-        height:20%;
-        width:100%;
-        background-color: #fff;
-                    .content-spottimes{
-
-                    }
-                    .content-thumbups{
-
-                    }
-                    .content-comments{
-                      
-                    }
-              }
     }
+       .content-header-pop{
+      width:220px;
+      height:180px;
+      display:flex;
+      flex-flow: column;
+      .pop-header{
+           margin:1% 2%;
+           width:100%;
+           height:50%;
+           display:flex;
+           flex-flow: row;
+          .pop-header-avatar{
+            margin:2% 2%;
+            width:30%;
+           height:100%;
+          }
+          .pop-header-profile{
+           margin:2% 2%;
+           width:60%;
+           height:100%;
+          }
+      }
+       .pop-button{
+           width:100%;
+           height:30%;
+           .pop-button-btn{
+            font-size: 10px;
+           }
+        
+      }
+       .pop-info{
+           text-align: center;
+           width:100%;
+           height:20%;
+           display:flex;
+           flex-flow: row;
+           .pop-info-left{
+            padding:0 5%;
+               width:50%;
+               height:90%;
+           }
+             .pop-info-right{
+              padding:0 5%;
+               width:50%;
+               height:90%;
+           }
+      }
+     } 
 </style>

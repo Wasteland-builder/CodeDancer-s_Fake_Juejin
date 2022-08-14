@@ -3,7 +3,11 @@
     <div class="top">
       <div>{{author}}</div>
       <div>{{publishTime}}</div>
+<<<<<<< HEAD
       <div v-for="(label, index) in labels">{{label}}</div>
+=======
+      <div v-for="(label, index) in labels" :key="'label-'+index">{{label}}</div>
+>>>>>>> dev_ling
     </div>
     <div class="center">
       <div class="left">

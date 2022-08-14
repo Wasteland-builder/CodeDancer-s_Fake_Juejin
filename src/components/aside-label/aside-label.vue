@@ -9,7 +9,8 @@
                     <subsPanel class="panel-item"/>
                     <shareActivePanel class="panel-item"/>
                     <hr class="panel-col"/>
-                    <reportPanel class="panel-item"/>
+                    <reportPanel class="panel-item"
+                                 :index="this.data.id"/>
                   <stickPanel class="panel-item"/>
             </div>
             <div class="active-panel-wrapper">
@@ -39,7 +40,9 @@ export default {
     },
     data(){
         return{
-           data:{thumbUp:10,
+           data:{
+                id:"1",
+                 thumbUp:10,
                  thumbUpActive:false,
                  comment:1,
                  thumbUpActive:false}

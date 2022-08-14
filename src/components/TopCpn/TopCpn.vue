@@ -3,7 +3,7 @@
   <div class="wrapper">
     <div class="top-bar">
       <router-link class="logo" to="/">
-        <img src="../assets/logo.svg">
+        <img src="../../assets/logo.svg">
       </router-link>
 
       <nav class="main-nav">
@@ -34,7 +34,7 @@
                   <form action="" class="search-form">
                     <input type="search" maxlength="32" placeholder="探索稀土掘金" value class="search-input">
                     <div class="search-icon-wrapper">
-                      <img src="../assets/search.svg" alt="搜索" class="search-icon">
+                      <img src="../../assets/search.svg" alt="搜索" class="search-icon">
                     </div>
                   </form>
                 </li>
@@ -66,7 +66,7 @@
 
             <div class="vip">
               <div class="vip-title">
-                <img src="../assets/vip.svg" alt="vip" class="vip-img">
+                <img src="../../assets/vip.svg" alt="vip" class="vip-img">
                 <div class="vip-word">会员</div>
               </div>
             </div>

@@ -1,39 +1,46 @@
 <template>
-    <div class="content-container">
+    <div class="content-container"  @mouseover="this.HandleHover()" @mouseout="this.HandleHover()" >
      
    <!-- 头部标签 -->
         <div class="content-header">
            <!-- 头像框 -->
-               <el-popover placement="top" :width="240" trigger="hover">
-                <div  class="content-header-pop" > 
+              <div class="content-lefthead">
+                 <el-popover placement="top" :width="240" trigger="hover">
+                 <div  class="content-header-pop" > 
                     <div class="pop-header">
-                        <el-avatar :size="50" src="https://empty" rel="external nofollow"  @error="errorHandler">
-                          <img
-                            src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png" rel="external nofollow" 
-                                />
-                           </el-avatar>
-                     </div>
+                        <div class="pop-header-avatar">
+                          <el-avatar :size="50" src="https://empty" rel="external nofollow"  @error="errorHandler">
+                            <img
+                              :src="this.avatar" rel="external nofollow" 
+                                  />
+                            </el-avatar>
+                          </div>   
+                           <div class = "pop-header-profile">
+                                <p style="height:30%">{{this.author}}</p>
+                                <div style="height:70%" height>{{this.profiles}}</div>
+                           </div>
+                    </div>
+              
                     <div  class="pop-button" style="text-align: center; width:100%; margin: 0">
-                      <el-button size="large" type="primary" @click="visible = false">关注</el-button>
+                      <el-button   size="large" style="width:90%" type="primary" @click="visible = false">                   关注                         </el-button>
                     </div>
                     <div class ="pop-info">
                           <div  class ="pop-info-left">
-                              <p>64</p>
+                              <p>{{this.focus}}</p>
                               <p>关注</p>
                           </div>
                             <div class ="pop-info-right">
-                               <p>44</p>
+                               <p>{{this.followers}}</p>
                               <p>粉丝</p>
                           </div>
                     </div>
-               </div>
+                </div> 
                 <template #reference>
                   <el-affix class="content-author">
                      {{this.contentdata.author}}
                    </el-affix>  
                 </template>
-              </el-popover>
-
+                    </el-popover>
                    
                   <div class="content-daycounter">
                      {{computerTime()}}
@@ -42,7 +49,15 @@
                        v-for="(item,id) in this.contentdata.target"
                        :key="'target'+id">
                       {{item}}
+                 </div>
+               </div>  
+                <div class="content-righthead">
+                   <div class="content-close" v-if="this.onHandleHover">
+                      <ClosePanel :index="this.contentdata.id" 
+                                  :author="this.contentdata.author"
+                                  :target="this.contentdata.target"/>
                  </div>  
+                </div>  
             </div> 
      <!-- 文章主要内容简介 -->
              <div class="content-main">
@@ -61,7 +76,8 @@
    <!-- 脚标 -->
           <div class="content-footer">
                  <div class="content-spottimes">
-                     <Eye style="width:2rem;height:2rem"/>{{this.contentdata.spottimes}}
+                     <Eye style="width:2rem;height:2rem"/>
+                      <div style="color:#86909c">{{this.contentdata.spottimes}}</div>
                  </div>  
                   <div class="content-thumbups">
                     <ThumbUp  @click="activeHandle(this.contentdata.id)" :thumbUpTimes="this.contentdata.thumbUps"  :thumbUpState="this.contentdata.status"/>
@@ -78,11 +94,12 @@ import { defineComponent } from 'vue'
 import Eye from '@/assets/icons/eye.svg'
 import ThumbUp from '../content-container-panel/ThumbUp.vue'
 import Comment from '../content-container-panel/Comment.vue'
+import ClosePanel  from '../content-container-panel/Close.vue'
 export default defineComponent({
     name:"content-hotpot",
     emits: ['ThumbUpClick'],
     components:{
-        Eye ,ThumbUp,Comment
+        Eye ,ThumbUp,Comment,ClosePanel
     },
     props:{
         index:Number,
@@ -95,7 +112,11 @@ export default defineComponent({
         target:Array,
         spottimes:Number,
         thumbUps:Number,
-        comments:Number
+        comments:Number,
+        focus:String,
+        followers:String,
+        profiles:String,
+        avatar:String
    },
      computed:{
       normalizedSize:()=>{
@@ -110,6 +131,10 @@ export default defineComponent({
               this.spottimes.trim().toLowerCase(),
               this.thumbUps.trim().toLowerCase(),
               this.comments.trim().toLowerCase(),
+              this.focus.trim().toLowerCase(),
+              this.followers.trim().toLowerCase(),
+              this.profiles.trim().toLowerCase(),
+              this.avatar.trim().toLowerCase(),
               this.target]
         )
          
@@ -182,6 +207,12 @@ export default defineComponent({
     setup(){
     },
       methods:{
+        HandleHover(){
+        if(this.onHandleHover) setTimeout(()=>{
+           this.onHandleHover = false;
+        },30000)  
+        else if(!this.onHandleHover) this.onHandleHover = true;
+        },
         computerTime(){
           let e = new Date(this.contentdata.date).getTime();
              let delta = (new Date().getTime() - e) / 1000;
@@ -218,8 +249,13 @@ export default defineComponent({
               target:this.target,
               spottimes:this.spottimes,
               thumbUps:this.thumbUps,
-              comments:this.comments
-          }
+              comments:this.comments,
+              focus:this.focus,
+              followers:this.followers,
+              profiles:this.profiles,
+              avatar:this.avatar
+          },
+          onHandleHover:false
         }
     }
 })
@@ -235,7 +271,12 @@ export default defineComponent({
         background-color: #fff;
         display: flex;
         flex-flow: row;
-              .content-author{
+        .content-lefthead{
+            width:80%;
+            height:100%;
+            display: flex;
+            flex-flow: row;
+           .content-author{
                 font-size:1.5rem;
                 padding:0% 2%; 
                 border-right: 1px solid #dedddd; 
@@ -259,6 +300,18 @@ export default defineComponent({
                 border-left: 1px solid #dedddd; 
                 height:60%
               }
+        }
+         .content-righthead {
+             width:20%; 
+            height:100%;
+            .content-close{
+                font-size:1rem;
+                padding:0% 0 0% 70% ; 
+                color:#8e99a2;  
+                flex-flow: right;
+                height:60%;
+              }
+         }  
         }
        .content-main{
         height:60%;
@@ -344,8 +397,8 @@ export default defineComponent({
                       width:30%;
                     height:100%;
                     img{
-                      height:100%;
-                      width:60%;
+                      height:120%;
+                      width:70%;
                     }
                 }
         }
@@ -359,6 +412,9 @@ export default defineComponent({
                        width:10%;
                       padding:0 1%;
                       line-height: 1.5;
+                      display: flex;
+                      flex-flow: row;
+                    
                     }
                     .content-thumbups{
                           width:10%;   
@@ -374,34 +430,52 @@ export default defineComponent({
                     }
               }
     }
-    .content-header-pop{
-      width:240px;
-      height:200px;
+       .content-header-pop{
+      width:220px;
+      height:180px;
       display:flex;
       flex-flow: column;
-      text-align:center 
       .pop-header{
-            width:100%;
+           margin:1% 2%;
+           width:100%;
            height:50%;
+           display:flex;
+           flex-flow: row;
+          .pop-header-avatar{
+            margin:2% 2%;
+            width:30%;
+           height:100%;
+          }
+          .pop-header-profile{
+           margin:2% 2%;
+           width:60%;
+           height:100%;
+          }
       }
        .pop-button{
-          width:100%;
+           width:100%;
            height:30%;
+           .pop-button-btn{
+            font-size: 10px;
+           }
         
       }
        .pop-info{
+           text-align: center;
            width:100%;
            height:20%;
            display:flex;
            flex-flow: row;
            .pop-info-left{
+            padding:0 5%;
                width:50%;
                height:90%;
            }
-             .pop-info-left{
-              width:50%;
+             .pop-info-right{
+              padding:0 5%;
+               width:50%;
                height:90%;
            }
       }
-    }
+     } 
 </style>

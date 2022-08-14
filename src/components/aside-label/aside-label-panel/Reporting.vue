@@ -1,103 +1,11 @@
 <template>
-    <div @click="this.DialogVisible= true">
+    <div @click="this.dialogVisible= true">
         <div class="list-aside-reporting">
             <div class="list-aside-border">
                 <warningIcon class="list-aside-iconsvg"/>
             </div>
         </div>
-  <el-dialog
-    v-model="DialogVisible"
-    width="650px"
-    destroy-on-close
-    border-radius="12px"
-
-  >
-  <template #header>
-     <p style="font-size:1.8rem;font-weight:512px;color:#515767;margin:2% 5%"> 举报反馈 </p>
-     <hr/>
-     <div style="font-size:1.15rem;;color:#515168;">掘金工作人员会尽快受理你的举报，随后将通过站内信告知你处理的结果，请尽量补充完整描述</div>
- </template>  
-    <div class="list-reporting">
-        <el-tabs class="list-reporting-paragraph">
-            <span style="color:red;font-size:1.15rem">* </span>
-            <span style="font-size:1.2rem">请选择一项投诉原因</span>
-        </el-tabs>
-        <el-tabs class="list-reporting-paragraph">
-        <span style="font-size:1.2rem">内容违规</span>   
-        </el-tabs>
-        <el-tabs class="list-reporting-paragraph">
-                   <!-- <el-radio-group> -->
-                          <el-button 
-                            size="large"
-                            class="list-reporting-radio" 
-                            color="#f2f3f5"
-                            dark="#eaf2ff"> 低俗色情 </el-button >
-                            <el-button 
-                            size="large"
-                            class="list-reporting-radio" 
-                           color="#f2f3f5"
-                            dark="#eaf2ff">内容抄袭 </el-button >
-                              <el-button 
-                            size="large"
-                            class="list-reporting-radio" 
-                             color="#f2f3f5"
-                            dark="#eaf2ff">涉嫌违法 </el-button >
-                              <el-button
-                            size="large" 
-                            class="list-reporting-radio" 
-                            color="#f2f3f5"
-                            dark="#eaf2ff"> 恶意营销 </el-button >
-                 <!-- </el-radio-group>           -->
-        </el-tabs>
-        <el-tabs class="list-reporting-paragraph">
-        <span style="font-size:1.2rem">侵犯权益</span>   
-        </el-tabs>
-        <el-tabs class="list-reporting-paragraph">
-                   <!-- <el-radio-group> -->
-                          <el-button 
-                            size="large"
-                            class="list-reporting-radio" 
-                            color="#f2f3f5"
-                            dark="#eaf2ff"> 侵犯名誉/隐私/著作/肖像权等</el-button >
-                         
-        </el-tabs>
-         <el-tabs class="list-reporting-paragraph">
-        <span style="font-size:1.2rem">其他原因</span>   
-        </el-tabs>
-        <el-tabs class="list-reporting-paragraph">
-                          <el-button 
-                            size="large"
-                            class="list-reporting-radio" 
-                            color="#f2f3f5"
-                            dark="#eaf2ff">其他原因</el-button >
-                         
-        </el-tabs>
-        <el-tabs class="list-reporting-paragraph">
-            <span style="color:red;font-size:1.15rem">* </span>
-            <span style="font-size:1.2rem">补充说明</span>
-        </el-tabs>
-        <el-input v-model="descriptionAdd"
-                :autosize="{ minRows: 3, maxRows: 5}"
-                type="textarea"
-                placeholder="请输入举报相关的补充说明">
-             </el-input> 
-        <el-tabs class="list-reporting-paragraph">
-            <span style="font-size:1.2rem">图片示例</span>
-        </el-tabs>
-         <el-tabs class="list-reporting-paragraph">
-            <span style="font-size:1.2rem">你可以上传相关证据或涉及举报内容具体位置的图片，帮助工作人员更快地核实处理
-            </span>
-        </el-tabs>
-        <supportUpload> </supportUpload>
-    </div>
-     <template #footer>
-      <span class="dialog-footer">
-        <el-button size="large" @click="centerDialogVisible = false">取消</el-button>
-        <el-button size="large" type="primary" @click="centerDialogVisible = false"
-          >确定举报</el-button>
-      </span>
-    </template>
-  </el-dialog>
+        <Reporting @submitReport="activeHandle" :active="this.dialogVisible" :index="this.passageindex"/>
  </div>
 </template>
 <style lang="less" scoped>
@@ -150,18 +58,41 @@
 import { ref } from 'vue'
 import warningIcon from '@/assets/icons/warning.svg'
 import supportUpload from '@/components/el-upload/el-upload.vue'
+import Reporting from '@/components/reporting/reporting.vue'
 export default ({
     name: 'ListWarning',
     components:{
         warningIcon,
-        supportUpload
+        supportUpload,
+        Reporting
+    },
+    props:{
+      index:String,
+    },
+    computed:{
+      normalizedSize:()=>{
+        return [
+                this.index.trim().toLowerCase(),
+        ]
+           
+      }
+    },
+    methods:{
+      activeHandle(status){
+         this.dialogVisible=status
+        },
     },
    setup(){
-        const DialogVisible = ref(false);
+        const centerDialogVisible = ref(false);
         return {
-            DialogVisible
+            centerDialogVisible
         } 
         },     
-    
+    data(){
+      return{
+        passageindex:this.index,
+        dialogVisible:false
+      }
+    }
 })
 </script>
