@@ -362,8 +362,8 @@ export default defineComponent({
                       width:30%;
                     height:100%;
                     img{
-                      height:100%;
-                      width:60%;
+                      height:130%;
+                      width:80%;
                     }
                 }
         }

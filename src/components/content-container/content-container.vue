@@ -12,25 +12,27 @@
           :profiles="this.data[0].profiles"
           :avatar="this.data[0].avatar">
        </contentContainerHotpot>
+       <div v-for="(item,index) in data" :key="'content-'+index">
        <contentContainerPassage
-          :index="1"   
-          :status="this.data[1].status"
-          :author="this.data[1].author"
-          :date="this.data[1].date"
-          :title="this.data[1].title"
-          :content="this.data[1].content"
-          :imgsrc="this.data[1].imgsrc"
-          :spottimes="this.data[1].spottimes"
-          :thumbUps="this.data[1].thumbUps"
-          :comments="this.data[1].comments"
-          :target="this.data[1].target"
-          :focus="this.data[1].focus"
-          :followers="this.data[1].followers"
-          :profiles="this.data[1].profiles"
-          :avatar="this.data[1].avatar" 
+          :index="index"   
+          :status="item.status"
+          :author="item.author"
+          :date="item.date"
+          :title="item.title"
+          :content="item.content"
+          :imgsrc="item.imgsrc"
+          :spottimes="item.spottimes"
+          :thumbUps="item.thumbUps"
+          :comments="item.comments"
+          :target="item.target"
+          :focus="item.focus"
+          :followers="item.followers"
+          :profiles="item.profiles"
+          :avatar="item.avatar" 
           @thumbUpClick="ActiveHandle"
           >
         </contentContainerPassage>
+       </div> 
             <!-- 可以v-for获取index 赋给 index 同时 注意按照type判断组件类型 -->
     </div>
 </template>
@@ -79,6 +81,23 @@ export default defineComponent({
                 title:'这是沸点的标题',
                 content:'这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容',
                 imgsrc:"src/assets/imgcover/2.jpg",
+                thumbUps:66,
+                spottimes:35,
+                comments:5,
+           },
+           {
+                type:'2', //1表示的是沸点 2表示文章 3表示动态
+                status:'2', //1表示未阅读 2表示已阅读&未点赞 3表示已阅读&已点赞 
+                author:'一瓶酸奶', 
+                focus:'65',
+                followers:'85',
+                profiles:'前端小萌新',
+                avatar:'https://p6-passport.byteacctimg.com/img/user-avatar/1a03ac3815da9fa8071d2b7d8a893070~300x300.image' ,
+                target:['前端','Javascrips'],
+                date:'2022-08-11T12:06:21.410588500Z', //标准时间戳 GMT+8
+                title:'这是沸点的标题',
+                content:'这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容的内容这是文章的的内容这是文章的的内容这是文章的的内容这是文章的',
+                imgsrc:"",
                 thumbUps:66,
                 spottimes:35,
                 comments:5,
