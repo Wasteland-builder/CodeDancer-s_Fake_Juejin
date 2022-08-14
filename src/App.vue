@@ -10,8 +10,6 @@ import asidelabel from '@/components/aside-label/aside-label.vue'
 
 <template>
 <top-cpn></top-cpn>
-<!-- <asidelabel></asidelabel>
-<content-container style="margin:10% 10%"></content-container> -->
 <router-view></router-view>
 </template>
 
