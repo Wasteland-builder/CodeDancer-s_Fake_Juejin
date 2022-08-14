@@ -4,6 +4,7 @@ import ElementPlus from 'element-plus'
 import * as  ElementPlusIconsVue from'element-plus'
 import 'element-plus/theme-chalk/index.css'
 import './assets/style/reset.css'
+import './assets/style/root.css'
 import App from './App.vue'
 
 const app =createApp(App);
