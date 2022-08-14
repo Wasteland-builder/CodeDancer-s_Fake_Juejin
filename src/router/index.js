@@ -5,7 +5,59 @@ const routes = [
     {
         path: '/',
         name: 'HomeView',
-        component: HomeView
+        component: HomeView,
+        children: [
+            {
+                path: '/recommended',
+                name: 'RecView',
+                component: () => import(/* webpackChunkName: "RecView" */ '../views/home/recommended/RecView.vue')
+            },
+            {
+                path: '/following',
+                name: 'Following',
+                component: () => import(/* webpackChunkName: "Following" */ '../views/home/following/Following.vue')
+            },
+            {
+                path: '/backend',
+                name: 'Backend',
+                component: () => import(/* webpackChunkName: "Backend" */ '../views/home/backend/Backend.vue')
+            },
+            {
+                path: '/frontend',
+                name: 'Frontend',
+                component: () => import(/* webpackChunkName: "Frontend" */ '../views/home/frontend/Frontend.vue')
+            },
+            {
+                path: '/android',
+                name: 'Android',
+                component: () => import(/* webpackChunkName: "Android" */ '../views/home/android/Android.vue')
+            },
+            {
+                path: '/ios',
+                name: 'Ios',
+                component: () => import(/* webpackChunkName: "Ios" */ '../views/home/ios/Ios.vue')
+            },
+            {
+                path: '/ai',
+                name: 'Ai',
+                component: () => import(/* webpackChunkName: "Ai" */ '../views/home/ai/Ai.vue')
+            },
+            {
+                path: '/freebie',
+                name: 'Freebie',
+                component: () => import(/* webpackChunkName: "Freebie" */ '../views/home/freebie/Freebie.vue')
+            },
+            {
+                path: '/career',
+                name: 'Career',
+                component: () => import(/* webpackChunkName: "Career" */ '../views/home/career/Career.vue')
+            },
+            {
+                path: '/article',
+                name: 'Article',
+                component: () => import(/* webpackChunkName: "Article" */ '../views/home/article/Article.vue')
+            },
+        ]
     },
     {
         path: '/hot',
