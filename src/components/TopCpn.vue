@@ -1,4 +1,5 @@
 <template>
+  <!-- 最顶部的导航栏 -->
   <div class="wrapper">
     <div class="top-bar">
       <router-link class="logo" to="/">
@@ -9,20 +10,10 @@
         <div class="nav-list">
           <div class="left-nav-list">
             <ul class="list">
-              <li>
-                <a href="https://juejin.cn/">首页</a>
-              </li>
-              <li>
-                <a href="https://juejin.cn/pins">沸点</a>
-              </li>
-              <li>
-                <a href="https://juejin.cn/course">课程</a>
-              </li>
-              <li>
-                <a href="https://juejin.cn/live">直播</a>
-              </li>
-              <li>
-                <a href="https://juejin.cn/events/all">活动</a>
+              <li v-for="(item, index) in navList"
+                 :key="index"
+                 :class="{ 'item-active': index === currentIndex}">
+                <router-link :to="item.to">{{item.text}}</router-link>
               </li>
               <nav>
                 <a href="https://detail.youzan.com/show/goods/newest?kdt_id=104340304" target="_blank">商城</a>
@@ -117,12 +108,17 @@
 <script>
 export default {
   name: "TopCpn",
+  props: ['currentIndex'],
   setup() {
-    const usermenu = {
-
-    }
+    const navList = [
+      { text: '首页', to: '/' },
+      { text: '沸点', to: '/hot' },
+      { text: '课程', to: '/course' },
+      { text: '直播', to: '/live' },
+      { text: '活动', to: '/events' },
+    ]
     return {
-      usermenu
+      navList
     }
   }
 }
@@ -134,6 +130,7 @@ export default {
   border-bottom: 1px solid #f1f1f1;
 
   .top-bar {
+    position: fixed;
     display: flex;
     align-items: center;
     height: 100%;
@@ -186,6 +183,10 @@ export default {
           padding: 0;
           margin: 0;
           list-style-type: circle;
+
+          .item-active {
+            color: #1e80ff  
+          }
 
           li,
           nav {

@@ -1,44 +1,37 @@
 <template>
     <nav class="top-nav">
-        <div class="nav-list">
-            <a href="https://juejin.cn/recommended" class="nav-item">
-                <div class="box">综合</div>
-            </a>
-            <a href="https://juejin.cn/following" class="nav-item">
-                <div class="box">关注</div>
-            </a>
-            <a href="https://juejin.cn/backend" class="nav-item">
-                <div class="box">后端</div>
-            </a>
-            <a href="https://juejin.cn/frontend" class="nav-item">
-                <div class="box">前端</div>
-            </a>
-            <a href="https://juejin.cn/android" class="nav-item">
-                <div class="box">Android</div>
-            </a>
-            <a href="https://juejin.cn/ios" class="nav-item">
-                <div class="box">iOS</div>
-            </a>
-            <a href="https://juejin.cn/ai" class="nav-item">
-                <div class="box">人工智能</div>
-            </a>
-            <a href="https://juejin.cn/freebie" class="nav-item">
-                <div class="box">开发工具</div>
-            </a>
-            <a href="https://juejin.cn/career" class="nav-item">
-                <div class="box">代码人生</div>
-            </a>
-            <a href="https://juejin.cn/article" class="nav-item">
-                <div class="box">阅读</div>
-            </a>
+        <ul class="nav-list">
+            <li v-for="(item, index) in navList" class="nav-item">
+                <!-- <div class="box">{{item.text}}</div> -->
+                <router-link :to="item.to">{{item.text}}</router-link>
+            </li>
             <a href="https://juejin.cn/subscribe/subscribed" class="nav-list-right nav-item">标签管理</a>
-        </div>
+        </ul>
     </nav>
+      <router-view></router-view>
 </template>
 
 <script>
 export default {
-    name: 'TypeNav'
+    name: 'TypeNav',
+    setup() {
+        const navList = [
+            { text: '综合', to: '/recommended' },
+            { text: '关注', to: '/following' },
+            { text: '后端', to: '/backend' },
+            { text: '前端', to: '/frontend' },
+            { text: 'Android', to: '/android' },
+            { text: 'iOS', to: '/ios' },
+            { text: '人工智能', to: '/ai' },
+            { text: '开发工具', to: '/freebie' },
+            { text: '代码人生', to: '/career' },
+            { text: '阅读', to: '/article' },
+        ]
+
+        return {
+            navList
+        }
+    }
 }
 </script>
 
@@ -47,7 +40,6 @@ export default {
     left: 0;
     background-color: #fff;
     position: fixed;
-    top: 5rem;
     width: 100%;
     height: 3.833rem;
     z-index: 100;
@@ -56,6 +48,7 @@ export default {
     transform: translateZ(0);
     display: block;
     border-top: #f1f1f1 1px solid;
+    color: #71777c;
 }
 
 .top-nav .nav-list {
@@ -101,7 +94,6 @@ export default {
     display: flex;
     flex-shrink: 0;
     font-size: 1.16rem;
-    color: #71777c;
     cursor: pointer;
 }
 </style>

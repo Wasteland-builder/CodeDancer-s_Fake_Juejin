@@ -4,34 +4,41 @@
         <div class="content-header">
                           <!-- 头像框 -->
                <el-popover placement="top" :width="240" trigger="hover">
-                <div  class="content-header-pop" > 
+                 <div  class="content-header-pop" > 
                     <div class="pop-header">
-                        <el-avatar :size="50" src="https://empty" rel="external nofollow"  @error="errorHandler">
-                          <img
-                            src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png" rel="external nofollow" 
-                                />
-                           </el-avatar>
-                     </div>
+                        <div class="pop-header-avatar">
+                          <el-avatar :size="50" src="https://empty" rel="external nofollow"  @error="errorHandler">
+                            <img
+                              :src="this.avatar" rel="external nofollow" 
+                                  />
+                            </el-avatar>
+                          </div>   
+                           <div class = "pop-header-profile">
+                                <p style="height:30%">{{this.author}}</p>
+                                <div style="height:70%" height>{{this.profiles}}</div>
+                           </div>
+                    </div>
+              
                     <div  class="pop-button" style="text-align: center; width:100%; margin: 0">
-                      <el-button size="large" type="primary" @click="visible = false">关注</el-button>
+                      <el-button   size="large" font-size="5rem"  type="primary" @click="visible = false">                   关注                         </el-button>
                     </div>
                     <div class ="pop-info">
                           <div  class ="pop-info-left">
-                              <p>64</p>
+                              <p>{{this.focus}}</p>
                               <p>关注</p>
                           </div>
                             <div class ="pop-info-right">
-                               <p>44</p>
+                               <p>{{this.followers}}</p>
                               <p>粉丝</p>
                           </div>
                     </div>
-               </div>
+                </div> 
                 <template #reference>
                   <el-affix class="content-author">
                      {{this.contentdata.author}}
                    </el-affix>  
                 </template>
-              </el-popover>
+        </el-popover>
                   <div class="content-daycounter">
                     {{computerTime()}}
                  </div>  
@@ -63,6 +70,10 @@ export default defineComponent({
         title:String,
         content:String,
         imgsrc:String,
+        focus:String,
+        followers:String,
+        profiles:String,
+        avatar:String
    },
      computed:{
       normalizedSize:()=>{
@@ -72,7 +83,12 @@ export default defineComponent({
               this.date.trim().toLowerCase(),
               this.title.trim().toLowerCase(),
               this.content.trim().toLowerCase(),
-              this.imgsrc.trim().toLowerCase()]
+              this.imgsrc.trim().toLowerCase(),
+              this.focus.trim().toLowerCase(),
+              this.followers.trim().toLowerCase(),
+              this.profiles.trim().toLowerCase(),
+              this.avatar.trim().toLowerCase(),
+              ]
         )
          
       },
@@ -144,7 +160,11 @@ export default defineComponent({
               date:this.date,
               title:this.title,
               content:this.content,
-              imgsrc:this.imgsrc
+              imgsrc:this.imgsrc,
+              focus:this.focus,
+              followers:this.followers,
+              profiles:this.profiles,
+              avatar:this.avatar
           }
         }
     }
@@ -275,19 +295,53 @@ export default defineComponent({
                     }
                 }
         }
-       .content-footer{
-        height:20%;
-        width:100%;
-        background-color: #fff;
-                    .content-spottimes{
-
-                    }
-                    .content-thumbups{
-
-                    }
-                    .content-comments{
-                      
-                    }
-              }
     }
+       .content-header-pop{
+      width:220px;
+      height:180px;
+      display:flex;
+      flex-flow: column;
+      .pop-header{
+           margin:1% 2%;
+           width:100%;
+           height:50%;
+           display:flex;
+           flex-flow: row;
+          .pop-header-avatar{
+            margin:2% 2%;
+            width:30%;
+           height:100%;
+          }
+          .pop-header-profile{
+           margin:2% 2%;
+           width:60%;
+           height:100%;
+          }
+      }
+       .pop-button{
+           width:100%;
+           height:30%;
+           .pop-button-btn{
+            font-size: 10px;
+           }
+        
+      }
+       .pop-info{
+           text-align: center;
+           width:100%;
+           height:20%;
+           display:flex;
+           flex-flow: row;
+           .pop-info-left{
+            padding:0 5%;
+               width:50%;
+               height:90%;
+           }
+             .pop-info-right{
+              padding:0 5%;
+               width:50%;
+               height:90%;
+           }
+      }
+     } 
 </style>
