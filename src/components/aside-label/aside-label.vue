@@ -97,11 +97,11 @@ export default {
         float:center;
         }
          .panel-col{
-        width:8rem;
+        width:3rem;
         height:0.1rem;
         border:none;
         float:left;
-        background-color:#aeadad;
+        background-color:#ffffff;
         }
     }
     

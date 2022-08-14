@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <div class="left"></div>
+    <div class="left">
+      <ContentContainer></ContentContainer>
+    </div>
     <div class="right">
       <CancelImg></CancelImg>
       <DownloadApp></DownloadApp>
@@ -11,6 +13,7 @@
 <script setup>
 import CancelImg from '../RightCpn/CancelImg.vue';
 import DownloadApp from '../RightCpn/DownloadApp.vue';
+import ContentContainer from '@/components/content-container/content-container.vue';
 </script>
 
 <style scoped lang="less">
@@ -22,7 +25,7 @@ import DownloadApp from '../RightCpn/DownloadApp.vue';
   background-color: pink;
   justify-content: space-between;
   .left {
-    width: 700px;
+    width: 800px;
     background-color: skyblue;
     height: 100%;
   }

@@ -1,17 +1,15 @@
 <template>
+    <div>
     <nav class="top-nav">
         <ul class="nav-list">
-<<<<<<< HEAD
-            <li v-for="(item, index) in navList" class="nav-item">
-=======
             <li v-for="(item, index) in navList" class="nav-item" :key="'nav-item-'+index">
->>>>>>> dev_ling
                 <!-- <div class="box">{{item.text}}</div> -->
                 <router-link :to="item.to">{{item.text}}</router-link>
             </li>
             <a href="https://juejin.cn/subscribe/subscribed" class="nav-list-right nav-item">标签管理</a>
         </ul>
     </nav>
+     </div>
       <router-view></router-view>
 </template>
 
@@ -43,7 +41,7 @@ export default {
 .top-nav {
     left: 0;
     background-color: #fff;
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
     height: 3.833rem;
     z-index: 100;
