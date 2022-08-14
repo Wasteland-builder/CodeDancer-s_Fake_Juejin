@@ -1,13 +1,13 @@
 <template>
-    <div class="content-container">
-  
-        <div class="content-header">
+    <div class="content-container" @mouseover="this.HandleHover()" @mouseout="HandleHover()">
+          <div class="content-header">
+              <div class="content-lefthead">
                           <!-- 头像框 -->
                <el-popover placement="top" :width="240" trigger="hover">
                  <div  class="content-header-pop" > 
                     <div class="pop-header">
                         <div class="pop-header-avatar">
-                          <el-avatar :size="50" src="https://empty" rel="external nofollow"  @error="errorHandler">
+                          <el-avatar :size="50" :src="this.avatar"   rel="external nofollow"  @error="errorHandler">
                             <img
                               :src="this.avatar" rel="external nofollow" 
                                   />
@@ -20,10 +20,10 @@
                     </div>
               
                     <div  class="pop-button" style="text-align: center; width:100%; margin: 0">
-                      <el-button   size="large" font-size="5rem"  type="primary" @click="visible = false">                   关注                         </el-button>
+                      <el-button   size="large" style="width:90%" type="primary" @click="visible = false">                   关注                         </el-button>
                     </div>
                     <div class ="pop-info">
-                          <div  class ="pop-info-left">
+                          <div  class ="pop-info-left" >
                               <p>{{this.focus}}</p>
                               <p>关注</p>
                           </div>
@@ -41,9 +41,16 @@
         </el-popover>
                   <div class="content-daycounter">
                     {{computerTime()}}
-                 </div>  
+                 </div>
+             </div>      
+         <div class="content-righthead">        
+                 <div class="content-close" v-if="this.onHandleHover">
+                      <ClosePanel :index="this.contentdata.index" 
+                                  :author="this.contentdata.author"
+                                  :target="[]"/>
+                 </div>
             </div> 
-   
+       </div>
              <div class="content-main">
                 <div :class="mainerMainCss(this.contentdata.imgsrc)" >
                   <div :class="mainerTitleCss(this.contentdata.status)">
@@ -59,11 +66,13 @@
          </div>
     </div>
 </template>
-<script>
+<script> 
+import  ClosePanel  from '../content-container-panel/Close.vue'
 import { defineComponent } from 'vue'
 export default defineComponent({
     name:"content-hotpot",
     props:{
+        index:Number,
         status:String,
         author:String,
         date:String,
@@ -75,10 +84,14 @@ export default defineComponent({
         profiles:String,
         avatar:String
    },
+   components:{
+    ClosePanel
+   },
      computed:{
       normalizedSize:()=>{
         return (
-            [ this.status.trim().toLowerCase(),
+            [  this.index.trim().toLowerCase(),
+              this.status.trim().toLowerCase(),
               this.author.trim().toLowerCase(),
               this.date.trim().toLowerCase(),
               this.title.trim().toLowerCase(),
@@ -96,10 +109,16 @@ export default defineComponent({
     setup(){
     },
       watch:{
+        index:{
+            deep:true,
+            handler(news){
+                this.contentdata.index=news;
+            }
+        },
         status:{
             deep:true,
             handler(news){
-                this.contentdata.watch=news;
+                this.contentdata.status=news;
             }
         },
         author:{
@@ -125,16 +144,22 @@ export default defineComponent({
             handler(news){
                 this.contentdata.content=news
             },
+           },    
           imgsrc:{
             deep:true,
             handler(news){
                 this.contentdata.imgsrc=news
             }
             }
-        }
-
-    }, 
+        }, 
       methods:{
+        HandleHover(){
+        if(this.onHandleHover) setTimeout(()=>{
+          this.onHandleHover = false;
+        },30000)  
+        else if(!this.onHandleHover) this.onHandleHover = true;
+        },
+        
         computerTime(){
           let e = new Date(this.contentdata.date).getTime();
              let delta = (new Date().getTime() - e) / 1000;
@@ -152,9 +177,12 @@ export default defineComponent({
           if(src === "") return "content-mainer-npic" ; 
           else return "content-mainer" }
       },
+    
     data(){
         return{
+          onHandleHover:false,
           contentdata:{
+              index:this.index,
               status:this.status,
               author:this.author,
               date:this.date,
@@ -171,7 +199,7 @@ export default defineComponent({
 })
 </script>
 <style lang="less" scoped>
-    .content-container{
+   .content-container{
         height:10rem;
         width:60rem;
         background-color: #fff;
@@ -181,7 +209,12 @@ export default defineComponent({
         background-color: #fff;
         display: flex;
         flex-flow: row;
-              .content-author{
+        .content-lefthead{
+            width:80%;
+            height:100%;
+            display: flex;
+            flex-flow: row;
+           .content-author{
                 font-size:1.5rem;
                 padding:0% 2%; 
                 border-right: 1px solid #dedddd; 
@@ -205,6 +238,18 @@ export default defineComponent({
                 border-left: 1px solid #dedddd; 
                 height:60%
               }
+        }
+         .content-righthead {
+             width:20%; 
+            height:100%;
+            .content-close{
+                font-size:1rem;
+                padding:0% 0 0% 70% ; 
+                color:#8e99a2;  
+                flex-flow: right;
+                height:60%;
+              }
+         }  
         }
        .content-main{
         height:60%;
@@ -264,7 +309,7 @@ export default defineComponent({
                         overflow: hidden;
                     }
                     .content-mainer-title-read{
-                        height:45%;
+                        height:40%;
                         margin:2% 2%;
                         font-size:1.6rem;
                         font-weight:600;
@@ -290,9 +335,8 @@ export default defineComponent({
                       width:30%;
                     height:100%;
                     img{
-                      padding:0 2% 0 0;
-                      height:130%;
-                      width:80%;
+                      height:120%;
+                      width:70%;
                     }
                 }
         }

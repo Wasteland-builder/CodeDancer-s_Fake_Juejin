@@ -1,7 +1,7 @@
 <template>
     <nav class="top-nav">
         <ul class="nav-list">
-            <li v-for="(item, index) in navList" class="nav-item">
+            <li v-for="(item, index) in navList" class="nav-item" :key="'nav-item-'+index">
                 <!-- <div class="box">{{item.text}}</div> -->
                 <router-link :to="item.to">{{item.text}}</router-link>
             </li>

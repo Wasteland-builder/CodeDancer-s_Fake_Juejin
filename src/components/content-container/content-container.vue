@@ -1,19 +1,21 @@
 <template>
-    <div>
-        <contentContainerHotpot
-          :status="this.data[0].status"
-          :author="this.data[0].author"
-          :date="this.data[0].date"
-          :title="this.data[0].title"
-          :content="this.data[0].content"
-          :imgsrc="this.data[0].imgsrc"
-          :focus="this.data[0].focus"
-          :followers="this.data[0].followers"
-          :profiles="this.data[0].profiles"
-          :avatar="this.data[0].avatar">
+    <div >
+       <div v-for="(item,index) in data" :key="'content-'+index" style="margin:2% 0;">
+          <contentContainerHotpot v-if="item.type==='1'"
+          :index="index"
+          :status="item.status"
+          :author="item.author"
+          :date="item.date"
+          :title="item.title"
+          :content="item.content"
+          :imgsrc="item.imgsrc"
+         :focus="item.focus"
+          :followers="item.followers"
+          :profiles="item.profiles"
+          :avatar="item.avatar" 
+          @click="this.ReadHandle(index)">
        </contentContainerHotpot>
-       <div v-for="(item,index) in data" :key="'content-'+index">
-       <contentContainerPassage
+       <contentContainerPassage v-if="item.type==='2'"
           :index="index"   
           :status="item.status"
           :author="item.author"
@@ -29,6 +31,7 @@
           :followers="item.followers"
           :profiles="item.profiles"
           :avatar="item.avatar" 
+          @click="this.ReadHandle(index)"
           @thumbUpClick="ActiveHandle"
           >
         </contentContainerPassage>
@@ -50,6 +53,7 @@ export default defineComponent({
         
     },
     data(){
+        // 在这里导入数据
         return{
            data:[{
                 type:'1', //1表示的沸点 2表示文章 3表示动态
@@ -130,7 +134,30 @@ export default defineComponent({
                     break;
                 }
                }
-        }   
+        },
+         ReadHandle(id){
+         let e = this.data[id].spottimes;
+               switch(this.data[id].status) {
+                case '1' :{
+                    this.data[id].spottimes = e+1;
+                    this.data[id].status='2';
+                    break;
+                }
+                //  case '2' :{
+                //     this.data[id].spottimes=e+1;
+                //     break;
+                // }
+                 case '3' :{
+                    this.data[id].spottimes=e+1;
+                    this.data[id].status='4';
+                    break;
+                }
+                //  case '4' :{
+                //     this.data[id].spottimes=e+1;
+                //     break;
+                // }
+               }
+        }      
     }
 }
 
