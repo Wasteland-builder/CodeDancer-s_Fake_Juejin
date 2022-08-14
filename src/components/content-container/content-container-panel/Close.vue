@@ -129,7 +129,7 @@ export default defineComponent({
     },
     methods:{
      propsStateCheck(){
-        console.log(this.id)
+   
              this.listIconCss ="content-container-iconsvg"
              this.listTimesCss ="content-container-content" 
             if(this.commentTime === 0){

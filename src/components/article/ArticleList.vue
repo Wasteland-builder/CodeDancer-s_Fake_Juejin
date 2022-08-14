@@ -4,6 +4,7 @@
       <ContentContainer></ContentContainer>
     </div>
     <div class="right">
+      <Checkin>  </Checkin>
       <CancelImg></CancelImg>
       <DownloadApp></DownloadApp>
     </div>
@@ -14,8 +15,9 @@
 import CancelImg from '../RightCpn/CancelImg.vue';
 import DownloadApp from '../RightCpn/DownloadApp.vue';
 import ContentContainer from '@/components/content-container/content-container.vue';
-</script>
+import Checkin from '@/components/checkin/checkin.vue';
 
+</script>
 <style scoped lang="less">
 .container {
   display: flex;
