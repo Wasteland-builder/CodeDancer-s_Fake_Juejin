@@ -22,15 +22,17 @@
     </div>
     <div class="acticleBody">
       <!-- 在这里渲染文章主体 -->
-      {{message.content}}
+        <acticle-content :content="message.content"></acticle-content>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, defineProps } from "vue";
+import acticleContent from "./acticleContent.vue"
 const props = defineProps(["acticleMessage"]);
 let message = ref(props.acticleMessage);
+
 </script>
 
 <style scoped lang="less">
