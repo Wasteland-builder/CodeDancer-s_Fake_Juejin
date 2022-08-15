@@ -1,9 +1,11 @@
 <template>
+  <!-- 文章主体部分 -->
   <div class="container">
     <post-body :acticleMessage="acticleMessage"></post-body>
   </div>
+  <!-- 右侧工具栏部分 -->
   <div class="acticleList">
-    <acticle-cata :acticleList="acticleList"></acticle-cata>
+    <acticle-cata></acticle-cata>
   </div>
 </template>
 
@@ -36,7 +38,15 @@ let acticleMessage = ref({
   # 标题9 
   内容9
   ## 标题10
-  内容10`,
+  内容10
+  # 标题11
+  内容11
+  ## 标题12
+  内容12
+  # 标题13
+  内容13
+  ## 标题14
+  内容14`,
   title: "title",
   authorName: "qianyan",
   authorImg: "imgpath",
@@ -46,16 +56,6 @@ let acticleMessage = ref({
 });
 
 import acticleCata from "../../components/post/acticleCata.vue";
-import Mitt from "../../until/mitt.js";
-let cataList = ref([]);
-const getList = (list) => {
-  cataList = list;
-};
-Mitt.on("tranList", getList);
-nextTick(() => {
-  const acticleList = ref(cataList);
-  console.log(cataList);
-});
 </script>
 
 <style scoped>
@@ -70,7 +70,7 @@ nextTick(() => {
 .acticleList {
   width: 200px;
   float: right;
-  background: red;
-  height: 400px;
+  background: white;
+  /* height: 400px; */
 }
 </style>  
