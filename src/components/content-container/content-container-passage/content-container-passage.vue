@@ -48,7 +48,7 @@
                   <div class="content-target" 
                        v-for="(item,id) in this.contentdata.target"
                        :key="'target'+id">
-                      {{item}}
+                      <a class="content-target-content" :href="this.targetPush(item)">{{item}}</a>
                  </div>
                </div>  
                 <div class="content-righthead">
@@ -213,6 +213,20 @@ export default defineComponent({
         },30000)  
         else if(!this.onHandleHover) this.onHandleHover = true;
         },
+        targetPush(e){
+          switch(e){
+            case 'Vue.js' : return "https://juejin.cn/tag/Vue.js"
+             case 'React.js' : return "https://juejin.cn/tag/React.js"
+              case 'Flutter' : return "https://juejin.cn/tag/Flutter"
+               case 'Dart' : return "https://juejin.cn/tag/Dart"
+                case 'Android' : return "https://juejin.cn/tag/Android"
+                 case '后端' : return "https://juejin.cn/tag/后端"
+                   case '前端' : return "https://juejin.cn/tag/前端"
+                     case 'Javascripts' : return "https://juejin.cn/tag/Javascripts"
+                      case 'CSS' : return "https://juejin.cn/tag/CSS"
+                       case 'TS' : return "https://juejin.cn/tag/TS"
+          }
+        },
         computerTime(){
           let e = new Date(this.contentdata.date).getTime();
              let delta = (new Date().getTime() - e) / 1000;
@@ -296,9 +310,15 @@ export default defineComponent({
               .content-target{
                 font-size:1rem;
                 padding:0.5% 2%; 
-                color:#8e99a2;  
+          
                 border-left: 1px solid #dedddd; 
                 height:60%
+              }
+               .content-target-content{
+                  color:#8e99a2;  
+               }
+              .content-target-content:hover{
+                color:#1d7dfa;  
               }
         }
          .content-righthead {
