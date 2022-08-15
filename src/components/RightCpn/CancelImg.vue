@@ -1,7 +1,7 @@
 <template>
     <div class="content">
         <img src="./image.webp" alt="" class="image">
-        <a class="exit">×</a>
+        <a class="exit" @click="handleDisplayNone">×</a>
         <a class="advertise" @mouseenter="changeText" @mouseleave="changeTextBack">广告</a>
     </div>
 </template>
@@ -12,6 +12,9 @@ const changeText = (event) => {
 }
 const changeTextBack = (event) => {
     event.target.innerText = "广告"
+}
+const handleDisplayNone = (event) => {
+    event.target.parentNode.style.display = "none"
 }
 </script>
 

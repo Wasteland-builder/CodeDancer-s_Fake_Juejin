@@ -276,8 +276,9 @@ export default defineComponent({
 </script>
 <style lang="less" scoped>
     .content-container{
+      box-sizing: border-box;
         height:10rem;
-        width:60rem;
+        width:700px;
         background-color: #fff;
         .content-header{
         height:20%;

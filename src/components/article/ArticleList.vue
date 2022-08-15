@@ -21,14 +21,11 @@ import Checkin from '@/components/checkin/checkin.vue';
 <style scoped lang="less">
 .container {
   display: flex;
-  margin: 4.5rem auto;
+  margin: 1rem auto;
   max-width: 960px;
-  height: 2000px;
-  background-color: pink;
   justify-content: space-between;
   .left {
-    width: 800px;
-    background-color: skyblue;
+    width: 700px;
     height: 100%;
   }
   .right {

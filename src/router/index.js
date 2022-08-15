@@ -6,6 +6,7 @@ const routes = [
         path: '/',
         name: 'HomeView',
         component: HomeView,
+        redirect: '/recommended',
         children: [
             {
                 path: '/recommended',
@@ -103,7 +104,8 @@ const routes = [
 
 const router = createRouter({
     history:  createWebHistory(),
-    routes
+    routes,
+    linkActiveClass: 'router--active'
 })
 
 export default router

@@ -201,7 +201,7 @@ export default defineComponent({
 <style lang="less" scoped>
    .content-container{
         height:10rem;
-        width:60rem;
+        width:700px;
         background-color: #fff;
         .content-header{
         height:20%;
