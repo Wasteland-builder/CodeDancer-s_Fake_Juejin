@@ -1,15 +1,16 @@
+<<<<<<< HEAD
 <script>
-  import TopCpn from './components/TopCpn.vue'
-  import AsideLabelBoard from "@/components/aside-label/aside-label.vue"
-  export default {
-    name: 'app',
-    components: {TopCpn,AsideLabelBoard}
-  }
+import TopCpn from '@/components/TopCpn/TopCpn.vue'
+export default {
+  name: 'app',
+  components: { TopCpn }
+}
 </script>
-
 <template>
-<top-cpn></top-cpn>
-<!-- <aside-label-board></aside-label-board> -->
-<router-view></router-view>
+  <top-cpn></top-cpn>
+  <router-view></router-view>
 </template>
 
+<script setup>
+import TopCpn from "@/components/TopCpn/TopCpn.vue";
+</script>

@@ -3,7 +3,7 @@
   <div class="wrapper">
     <div class="top-bar">
       <router-link class="logo" to="/">
-        <img src="../assets/logo.svg">
+        <img src="../../assets/logo.svg">
       </router-link>
 
       <nav class="main-nav">
@@ -12,8 +12,8 @@
             <ul class="list">
               <li v-for="(item, index) in navList"
                  :key="index"
-                 :class="{ 'item-active': index === currentIndex}">
-                <router-link :to="item.to">{{item.text}}</router-link>
+                >
+                <router-link :to="item.to" >{{item.text}}</router-link>
               </li>
               <nav>
                 <a href="https://detail.youzan.com/show/goods/newest?kdt_id=104340304" target="_blank">商城</a>
@@ -34,7 +34,7 @@
                   <form action="" class="search-form">
                     <input type="search" maxlength="32" placeholder="探索稀土掘金" value class="search-input">
                     <div class="search-icon-wrapper">
-                      <img src="../assets/search.svg" alt="搜索" class="search-icon">
+                      <img src="../../assets/search.svg" alt="搜索" class="search-icon">
                     </div>
                   </form>
                 </li>
@@ -66,7 +66,7 @@
 
             <div class="vip">
               <div class="vip-title">
-                <img src="../assets/vip.svg" alt="vip" class="vip-img">
+                <img src="../../assets/vip.svg" alt="vip" class="vip-img">
                 <div class="vip-word">会员</div>
               </div>
             </div>
@@ -106,6 +106,7 @@
 </template>
 
 <script>
+import {ref} from 'vue'
 export default {
   name: "TopCpn",
   props: ['currentIndex'],
@@ -117,14 +118,25 @@ export default {
       { text: '直播', to: '/live' },
       { text: '活动', to: '/events' },
     ]
+    // let currentIndex = ref(0)
+    // const handleItemColor = (index) => {
+    //   currentIndex = index
+    //   console.log(index)
+    //   console.log(currentIndex)
+    // }
     return {
-      navList
+      navList,
+      // currentIndex,
+      // handleItemColor
     }
   }
 }
 </script>
 
 <style scoped lang="less">
+.router--active, .router-link-exact-active {
+  color: #1e80ff !important;
+}
 .wrapper {
   background-color: white;
   border-bottom: 1px solid #f1f1f1;

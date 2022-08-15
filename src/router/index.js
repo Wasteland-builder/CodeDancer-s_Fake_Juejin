@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import HomeView from '../views/home/HomeView.vue'
 
 const routes = [
@@ -6,6 +6,7 @@ const routes = [
         path: '/',
         name: 'HomeView',
         component: HomeView,
+        redirect: '/recommended',
         children: [
             {
                 path: '/recommended',
@@ -138,12 +139,18 @@ const routes = [
         path: '/extension',
         name: 'ExtView',
         component: () => import(/* webpackChunkName: "ExtView" */ '../views/extension/ExtView.vue')
+    },
+    {
+        path: "/post/:id",
+        name: 'post',
+        component: () => import('../views/post/index.vue')
     }
 ]
 
 const router = createRouter({
-    history: createWebHashHistory(),
-    routes
+    history:  createWebHistory(),
+    routes,
+    linkActiveClass: 'router--active'
 })
 
 router.beforeEach((to, from, next) => {

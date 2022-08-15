@@ -9,7 +9,8 @@
                     <subsPanel class="panel-item"/>
                     <shareActivePanel class="panel-item"/>
                     <hr class="panel-col"/>
-                    <reportPanel class="panel-item"/>
+                    <reportPanel class="panel-item"
+                                 :index="this.data.id"/>
                   <stickPanel class="panel-item"/>
             </div>
             <div class="active-panel-wrapper">
@@ -39,7 +40,9 @@ export default {
     },
     data(){
         return{
-           data:{thumbUp:10,
+           data:{
+                id:"1",
+                 thumbUp:10,
                  thumbUpActive:false,
                  comment:1,
                  thumbUpActive:false}
@@ -58,11 +61,11 @@ export default {
                     break;
                 }}
                 case 1 :{if(status) {
-                    this.data.thumbUp--;
+                    this.data.thumbUp= this.data.thumbUp-1;
                     this.data.thumbUpActive=false;
                     break;
                 } else{
-                    this.data.thumbUp++;
+                      this.data.thumbUp=this.data.thumbUp+1;
                     this.data.thumbUpActive=true;
                     break;
                 }}
@@ -94,11 +97,11 @@ export default {
         float:center;
         }
          .panel-col{
-        width:8rem;
+        width:3rem;
         height:0.1rem;
         border:none;
         float:left;
-        background-color:#aeadad;
+        background-color:#ffffff;
         }
     }
     

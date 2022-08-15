@@ -1,13 +1,14 @@
 <template>
-  <type-nav></type-nav>
+  <type-nav style="position:absolute"></type-nav>
 </template>
 
 <script>
-  import TypeNav from './TypeNav.vue'
+import TypeNav from './TypeNav.vue'
+
   export default {
     name: 'HomeView',
     components: {
-        TypeNav,
+        TypeNav
     }
   }
 </script>

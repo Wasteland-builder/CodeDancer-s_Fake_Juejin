@@ -166,3 +166,6 @@ ul {
 nav {
   display: block;
 }
+.router--active {
+  color: rgb(30, 128, 255)
+}

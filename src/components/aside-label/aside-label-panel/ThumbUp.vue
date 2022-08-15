@@ -19,10 +19,9 @@ export default defineComponent({
     },
     computed:{
       normalizedSize:()=>{
-        return this.thumbUpTimes.trim().toLowerCase()
-      },
-      normalizedSize:()=>{
-        return this.thumbUpState.trim().toLowerCase()
+        return [this.thumbUpTimes.trim().toLowerCase(),
+                this.thumbUpState.trim().toLowerCase()
+                ]
       }
     },
       watch:{
@@ -59,7 +58,7 @@ export default defineComponent({
        propsStateCheck(){
             if (this.thumbUpTimes === 0){
                 this.listIconCss="list-aside-iconsvg-none",
-                this.listTimesCss=".list-aside-align-top"
+                this.listTimesCss="list-aside-align-top"
                 return false
             }
            else if(this.thumbUpActive){
