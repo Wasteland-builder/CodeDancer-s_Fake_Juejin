@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script>
 import TopCpn from '@/components/TopCpn/TopCpn.vue'
 export default {
@@ -10,3 +11,6 @@ export default {
   <router-view></router-view>
 </template>
 
+<script setup>
+import TopCpn from "@/components/TopCpn/TopCpn.vue";
+</script>
