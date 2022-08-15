@@ -148,8 +148,7 @@ export default ({
             deep:true,
             handler(news){
                 this.dataparmas.centerDialogVisible=news;
-                console.log(this.dataparmas.centerDialogVisible)
-            }
+              }
         }
     },
     data(){

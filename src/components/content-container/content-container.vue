@@ -1,5 +1,8 @@
 <template>
     <div >
+        <div >
+              <contentNav ></contentNav>
+        </div>
        <div v-for="(item,index) in data" :key="'content-'+index" style="margin:2% 0;">
           <contentContainerHotpot v-if="item.type==='1'"
           :index="index"
@@ -41,11 +44,13 @@
 </template>
 <script lang="ts">
 import { defineComponent } from '@vue/runtime-core'
+import contentNav from '@/components/content-nav/content-nav.vue';
 import contentContainerHotpot from './content-container-hotpot/content-container-hotpot.vue'
 import contentContainerPassage from './content-container-passage/content-container-passage.vue'
 export default defineComponent({
     name:"content-container",
     components:{
+    contentNav,
     contentContainerHotpot,
     contentContainerPassage
     },
@@ -80,7 +85,7 @@ export default defineComponent({
                 followers:'85',
                 profiles:'前端小萌新',
                 avatar:'https://p6-passport.byteacctimg.com/img/user-avatar/1a03ac3815da9fa8071d2b7d8a893070~300x300.image' ,
-                target:['前端','Javascrips'],
+                target:['前端','Javascripts'],
                 date:'2022-06-18T12:06:21.410588500Z', //标准时间戳 GMT+8
                 title:'这是沸点的标题',
                 content:'这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容',
@@ -97,7 +102,7 @@ export default defineComponent({
                 followers:'85',
                 profiles:'前端小萌新',
                 avatar:'https://p6-passport.byteacctimg.com/img/user-avatar/1a03ac3815da9fa8071d2b7d8a893070~300x300.image' ,
-                target:['前端','Javascrips'],
+                target:['前端','Javascripts','CSS'],
                 date:'2022-08-11T12:06:21.410588500Z', //标准时间戳 GMT+8
                 title:'这是沸点的标题',
                 content:'这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容的内容这是文章的的内容这是文章的的内容这是文章的的内容这是文章的',
@@ -105,7 +110,44 @@ export default defineComponent({
                 thumbUps:66,
                 spottimes:35,
                 comments:5,
-           }]
+           },
+             {
+                type:'2', //1表示的是沸点 2表示文章 3表示动态
+                status:'2', //1表示未阅读 2表示已阅读&未点赞 3表示已阅读&已点赞 
+                author:'后端菜鸟', 
+                focus:'65',
+                followers:'85',
+                profiles:'前端小萌新',
+                avatar:'https://p6-passport.byteacctimg.com/img/user-avatar/1a03ac3815da9fa8071d2b7d8a893070~300x300.image' ,
+                target:['后端','Go'],
+                date:'2022-08-11T12:06:21.410588500Z', //标准时间戳 GMT+8
+                title:'这是沸点的标题',
+                content:'这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容的内容这是文章的的内容这是文章的的内容这是文章的的内容这是文章的',
+                imgsrc:"",
+                thumbUps:66,
+                spottimes:35,
+                comments:5,
+           },
+             {
+                type:'2', //1表示的是沸点 2表示文章 3表示动态
+                status:'2', //1表示未阅读 2表示已阅读&未点赞 3表示已阅读&已点赞 
+                author:'一只九岭', 
+                focus:'23',
+                followers:'123',
+                profiles:'前端小萌新',
+                avatar:'https://p6-passport.byteacctimg.com/img/user-avatar/1a03ac3815da9fa8071d2b7d8a893070~300x300.image' ,
+                target:['','Javascripts'],
+                date:'2022-01-23T10:06:21.410588500Z', //标准时间戳 GMT+8
+                title:'这是沸点的标题',
+                content:'这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容的内容这是文章的的内容这是文章的的内容这是文章的的内容这是文章的',
+                imgsrc:"https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b3932fb40d29454c9dedea3c66a1bbba~tplv-k3u1fbpfcp-no-mark:720:720:720:480.awebp?",
+                thumbUps:22,
+                spottimes:55,
+                comments:341,
+           }
+
+           
+           ]
         }
     },
     methods:{

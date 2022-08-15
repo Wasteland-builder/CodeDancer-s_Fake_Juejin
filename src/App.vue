@@ -9,5 +9,4 @@ import { ref, provide, nextTick } from 'vue'
 import TopCpn from "@/components/TopCpn/TopCpn.vue";
 import contentContainer from "@/components/content-container/content-container.vue";
 import asidelabel from "@/components/aside-label/aside-label.vue";
-
 </script>
