@@ -1,6 +1,6 @@
 <template>
   <div class="acticleCata">
-    <div v-for="(item, index) in cataList" :key="index" class="cataSon">
+    <div v-for="(item, index) in cataList" :key="index" class="cataSon" :class="[{'cataSon-active': index == 1}]">
       {{ item.title }}
     </div>
   </div>
@@ -33,9 +33,12 @@ Mitt.on('tranList', getList);
   line-height: 22px;
   position: relative;
 }
-.cataSon-active{
+
+.cataSon-active {
+  color: #1e80ff;
 }
-.cataSon::before {
+
+.cataSon-active::before {
   content: "";
   position: absolute;
   top: 4px;
