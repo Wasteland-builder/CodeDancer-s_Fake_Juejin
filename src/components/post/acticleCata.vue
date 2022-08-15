@@ -1,6 +1,14 @@
 <template>
   <div class="acticleCata">
-    <div v-for="(item, index) in cataList" :key="index" class="cataSon" :class="[{'cataSon-active': index == 1}]">
+    <div
+      v-for="(item, index) in cataList"
+      :key="index"
+      class="cataSon"
+      :class="[{ 'cataSon-active': index == 1 }]"
+      :data-v-md-line = "item.lineIndex"
+      @click="handleAnchorClick(item.lineIndex)"
+      ref="cata"
+    >
       {{ item.title }}
     </div>
   </div>
@@ -11,10 +19,33 @@ import { ref, nextTick, defineProps, onBeforeMount } from "vue";
 import Mitt from "../../until/mitt.js";
 let props = defineProps(["acticleList"]);
 let cataList = ref(null);
+let cata = ref(null);
 const getList = (list) => {
   cataList.value = list;
+};
+Mitt.on("tranList", getList);
+
+// 更变样式
+const changeClass = (item) => {
+  for(let i in cata.value){
+    cata.value[i].classList.remove("cataSon-active");
+    if(cata.value[i].getAttribute("data-v-md-line") == item){
+      cata.value[i].classList.add("cataSon-active");
+    }
+  }
 }
-Mitt.on('tranList', getList);
+
+const handleAnchorClick = (item) => {
+  // 发出跳转
+  Mitt.emit("scrollTo" , item);
+  // changeClass(item);
+};
+
+// 监听滚动并且更变
+const beWatch = (lineIndex) => {
+  changeClass(lineIndex);
+}
+Mitt.on("beWatch" , beWatch);
 
 </script>
 
