@@ -2,7 +2,7 @@
     <div>
         <div class = "nav-main"> 
                      <el-tabs v-model="navValue"  @tab-click="handleClick()">
-                        <el-tab-pane :label="item.label"  v-for="(item,index) in navList" :key="item.key" :name="item.value" >
+                        <el-tab-pane :label="item.label"  v-for="item in navList" :key="item.key" :name="item.value" >
                         </el-tab-pane>
                   </el-tabs>
                   <el-select class="nav-flitter" v-model="value" filterable @selected="handleFilter()">
@@ -74,7 +74,7 @@ export default defineComponent({
 
                         ]
         return{
-            value,fliter,navList,handleClick
+            value,navValue,fliter,navList,handleClick
         }
     }
 })

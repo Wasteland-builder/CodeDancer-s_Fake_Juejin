@@ -9,7 +9,7 @@
                  <div  class="content-header-pop" > 
                     <div class="pop-header">
                         <div class="pop-header-avatar">
-                          <el-avatar :size="50" src="https://empty" rel="external nofollow"  @error="errorHandler">
+                          <el-avatar :size="50" src="http://localhost:5173" rel="external nofollow" >
                             <img
                               :src="this.avatar" rel="external nofollow" 
                                   />
@@ -76,7 +76,7 @@
    <!-- 脚标 -->
           <div class="content-footer">
                  <div class="content-spottimes">
-                     <Eye style="width:2rem;height:2rem"/>
+                     <Eye style="width:1.5rem;height:1.5rem"/>
                       <div style="color:#86909c">{{this.contentdata.spottimes}}</div>
                  </div>  
                   <div class="content-thumbups">

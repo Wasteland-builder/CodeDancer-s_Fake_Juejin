@@ -9,12 +9,13 @@
                 </div>
                   <div  class="checkin-container-btn"> 
                       <el-button @click="this.$router.push('/user/center/signin')" class="el-btn" type="primary" round plain>去签到</el-button>
+
                 </div>
           </div>
             <div  class="checkin-container-slogan"> 
                   点亮你在社区的每一天
           </div>
-       </div>
+      </div>
 </template>
 
 <script >

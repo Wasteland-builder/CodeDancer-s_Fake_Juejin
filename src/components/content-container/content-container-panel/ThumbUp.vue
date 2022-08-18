@@ -1,9 +1,9 @@
 <template>
         <div class="content-container-thumbup">
-                    <thumbUpIconSolid v-if="this.thumbUpActive" :class="this.listIconCss"/>
-                    <thumbUpIcon v-if="!this.thumbUpActive" :class="this.listIconCss"/>
-                     <div :class="this.listTimesCss" v-if="this.propsStateCheck(this.thumbUpState)">{{this.thumbUpTime}}</div>
-                     <div :class="this.listTimesCss" v-if="!this.propsStateCheck(this.thumbUpState)">点赞</div>
+                    <thumbUpIconSolid v-if="this.data.thumbUpActive" :class="this.listIconCss"/>
+                    <thumbUpIcon v-if="!this.data.thumbUpActive" :class="this.listIconCss"/>
+                     <div :class="this.listTimesCss" v-if="this.propsStateCheck(this.data.thumbUpState)">{{this.data.thumbUpTime}}</div>
+                     <div :class="this.listTimesCss" v-if="!this.propsStateCheck(this.data.thumbUpState)">点赞</div>
        </div>            
 </template>
 <script>
@@ -34,13 +34,13 @@ export default defineComponent({
         thumbUpTimes:{
             deep:true,
             handler(news){
-                this.thumbUpTime=news;
+                this.data.thumbUpTime=news;
             }
         },
         thumbUpState:{
             deep:true,
             handler(news){
-                this.thumbUpState=news
+                this.data.thumbUpState=news
             }
         },
     },
@@ -55,9 +55,11 @@ export default defineComponent({
     },
     data(){
         return{
-            thumbUpState:this.thumbUpState,
+            data:{
+               thumbUpState:this.thumbUpState,
             thumbUpTime:this.thumbUpTimes,
-            thumbUpActive:false,
+            thumbUpActive:false,     
+            },
             listIconCss:'',
             listTimesCss:''
         }
@@ -66,31 +68,31 @@ export default defineComponent({
      propsStateCheck(e){
            switch(e){
                     case '1':{
-                        this.thumbUpActive=false;
+                        this.data.thumbUpActive=false;
                         this.listIconCss="content-container-iconsvg"
                          this.listTimesCss="content-container-content" 
                          break;
                     }
                     case '2':{
-                          this.thumbUpActive=false;
+                          this.data.thumbUpActive=false;
                         this.listIconCss="content-container-iconsvg"
                          this.listTimesCss="content-container-content"
                           break;
                     }
                     case '3':{
-                         this.thumbUpActive=true;
+                         this.data.thumbUpActive=true;
                         this.listIconCss="content-container-iconsvg-active"
                          this.listTimesCss="content-container-content-active"
                           break;
                     }
                     case '4':{
-                        this.thumbUpActive=true;
+                        this.data.thumbUpActive=true;
                         this.listIconCss="content-container-iconsvg-active"  
                          this.listTimesCss="content-container-content-active"
                           break;
                     }
                 }
-            if(this.thumbUpTime===0){
+            if(this.data.thumbUpTime===0){
                 return false
             }   
             else   return true
@@ -109,16 +111,16 @@ export default defineComponent({
            margin:0 auto;
            padding: 30% 30% 30% 30%;
             vertical-align: middle;
-           width:2rem;
-            height:2rem;
+           width:1.5rem;
+            height:1.5rem;
             fill: #8a919f;
         }
         .content-container-iconsvg{
             margin:0 auto;
             padding:0 10% 24% 2%;
             vertical-align: middle;
-            width:2rem;
-            height:2rem;
+            width:1.5rem;
+            height:1.5rem;
             fill: #8a919f;
             float:left
         }
@@ -126,8 +128,8 @@ export default defineComponent({
             margin:0 auto;
             padding:0 10% 24% 2%;
             vertical-align: middle;
-            width:2rem;
-            height:2rem;
+            width:1.5rem;
+            height:1.5rem;
             fill: #1e80ff;
             float:left
         }
@@ -135,8 +137,8 @@ export default defineComponent({
             margin:0 auto;
             padding:0 10% 24% 2%;
             vertical-align: middle;
-            width:2rem;
-            height:2rem;
+            width:1.5rem;
+            height:1.5rem;
             fill: #1e80ff;
             float:left
             } 
@@ -144,8 +146,8 @@ export default defineComponent({
             margin:0 auto;
             padding:0 10% 24% 2%;
             vertical-align: middle;
-            width:2rem;
-            height:2rem;
+            width:1.5rem;
+            height:1.5rem;
             color: #8a919f;
             float:left
         }
@@ -153,8 +155,8 @@ export default defineComponent({
             margin:0 auto;
               padding:0 10% 24% 2%;
             vertical-align: middle;
-            width:2rem;
-            height:2rem;
+            width:1.5rem;
+            height:1.5rem;
             color: #1e80ff;
              float:left
             }
@@ -162,8 +164,8 @@ export default defineComponent({
             margin:0 auto;
             padding:0 10% 24% 2%;
             vertical-align: middle;
-            width:2rem;
-            height:2rem;
+            width:1.5rem;
+            height:1.5rem;
             color: #1e80ff;
             float:left
             }           

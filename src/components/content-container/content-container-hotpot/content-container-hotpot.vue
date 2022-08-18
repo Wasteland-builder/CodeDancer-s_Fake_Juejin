@@ -7,7 +7,7 @@
                  <div  class="content-header-pop" > 
                     <div class="pop-header">
                         <div class="pop-header-avatar">
-                          <el-avatar :size="50" :src="this.avatar"   rel="external nofollow"  @error="errorHandler">
+                          <el-avatar :size="50" :src="this.avatar"   rel="external nofollow"  >
                             <img
                               :src="this.avatar" rel="external nofollow" 
                                   />

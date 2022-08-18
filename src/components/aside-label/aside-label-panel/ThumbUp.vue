@@ -1,7 +1,7 @@
 <template>
         <div class="list-aside-reporting">
             <div class="list-aside-border">
-                <div :class="this.listTimesCss" v-if="this.propsStateCheck()">{{this.thumbUpTime}}</div>
+                <div :class="this.listTimesCss" v-if="this.propsStateCheck()">{{this.data.thumbUpTime}}</div>
                     <thumbUpIcon :class="this.listIconCss"/>
             </div>
         </div>
@@ -28,13 +28,13 @@ export default defineComponent({
         thumbUpTimes:{
             deep:true,
             handler(news){
-                this.thumbUpTime=news;
+                this.data.thumbUpTime=news;
             }
         },
         thumbUpState:{
             deep:true,
             handler(news){
-                this.thumbUpActive=news
+                this.data.thumbUpActive=news
             }
         },
     },
@@ -48,8 +48,10 @@ export default defineComponent({
     },
     data(){
         return{
+           data:{
             thumbUpActive:this.thumbUpState,
             thumbUpTime:this.thumbUpTimes,
+           }, 
             listIconCss:'',
             listTimesCss:''
         }

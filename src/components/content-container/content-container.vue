@@ -3,23 +3,23 @@
         <div >
               <contentNav ></contentNav>
         </div>
-       <div v-for="(item,index) in data" :key="'content-'+index" style="margin:2% 0;">
+       <div v-for="(item,itid) in data" :key="'content-'+itid" style="margin:2% 0;">
           <contentContainerHotpot v-if="item.type==='1'"
-          :index="index"
+          :index="itid"
           :status="item.status"
           :author="item.author"
           :date="item.date"
           :title="item.title"
           :content="item.content"
           :imgsrc="item.imgsrc"
-         :focus="item.focus"
+          :focus="item.focus"
           :followers="item.followers"
           :profiles="item.profiles"
           :avatar="item.avatar" 
-          @click="this.ReadHandle(index)">
+          @click="this.ReadHandle(itid)">
        </contentContainerHotpot>
        <contentContainerPassage v-if="item.type==='2'"
-          :index="index"   
+          :index="itid"   
           :status="item.status"
           :author="item.author"
           :date="item.date"
@@ -34,7 +34,7 @@
           :followers="item.followers"
           :profiles="item.profiles"
           :avatar="item.avatar" 
-          @click="this.ReadHandle(index)"
+          @click="this.ReadHandle(itid)"
           @thumbUpClick="ActiveHandle"
           >
         </contentContainerPassage>
@@ -44,7 +44,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from '@vue/runtime-core'
-import contentNav from '@/components/content-nav/content-nav.vue';
+import contentNav from '@/components/content-nav/content-nav.vue'
 import contentContainerHotpot from './content-container-hotpot/content-container-hotpot.vue'
 import contentContainerPassage from './content-container-passage/content-container-passage.vue'
 export default defineComponent({
@@ -136,7 +136,7 @@ export default defineComponent({
                 followers:'123',
                 profiles:'前端小萌新',
                 avatar:'https://p6-passport.byteacctimg.com/img/user-avatar/1a03ac3815da9fa8071d2b7d8a893070~300x300.image' ,
-                target:['','Javascripts'],
+                target:['CSS','Javascripts'],
                 date:'2022-01-23T10:06:21.410588500Z', //标准时间戳 GMT+8
                 title:'这是沸点的标题',
                 content:'这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容这是文章的内容的内容这是文章的的内容这是文章的的内容这是文章的的内容这是文章的',
@@ -145,8 +145,6 @@ export default defineComponent({
                 spottimes:55,
                 comments:341,
            }
-
-           
            ]
         }
     },
