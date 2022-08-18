@@ -50,8 +50,8 @@ const getTitle = () => {
         window.scrollY + document.documentElement.clientHeight;
       let visibleTop = window.scrollY;
       for (let i = 0; i < titles.length; ++i) {
-        // 这里是将元素移动到屏幕中央时
-        let centerY = titles[i].offsetTop + titles[i].offsetHeight / 2;
+        // 这里是将元素移动到屏幕顶部时
+        let centerY = titles[i].offsetTop + titles[i].offsetHeight / 2 * 3;
         if (centerY > visibleTop && centerY < visibleBottom) {
           beWatch(titles[i].getAttribute("data-v-md-line"));
           break;
@@ -59,10 +59,17 @@ const getTitle = () => {
       }
     };
     document.addEventListener("scroll", () => {
-      debounce(srcollMonitor(), 1000);
+      debounce(srcollMonitor(), 2000);
     });
   });
 };
 getTitle();
+
+// 接收跳转
+const scrollTo = (item) => {
+  const heading = preview.value.querySelector(`[data-v-md-line="${item}"]`);
+  heading.scrollIntoView({behavior: "smooth", inline: "nearest"});
+};
+Mitt.on("scrollTo", scrollTo);
 </script>
 
