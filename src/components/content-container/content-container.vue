@@ -52,13 +52,13 @@ export default defineComponent({
     contentContainerPassage
     },
    mounted(){
-    Login(){
-        Promise.resolve(
-        login().then((res)=>{
-        console.log(res)
-    })
-    )
-    }
+    // Login(){
+    //     Promise.resolve(
+    //     login().then((res)=>{
+    //     console.log(res)
+    // })
+    // )
+    // }
     },
     data(){
         // 在这里导入数据
