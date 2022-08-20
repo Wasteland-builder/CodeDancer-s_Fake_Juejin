@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div class="content">
         <div >
               <contentNav ></contentNav>
         </div>
@@ -204,5 +204,8 @@ export default defineComponent({
 )
 </script>
 <style lang="less" scoped>
-
+.content{
+    background: white;
+    // padding: 8px;
+}
 </style>

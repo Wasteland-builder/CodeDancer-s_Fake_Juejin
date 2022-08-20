@@ -51,7 +51,7 @@ const getTitle = () => {
       let visibleTop = window.scrollY;
       for (let i = 0; i < titles.length; ++i) {
         // 这里是将元素移动到屏幕顶部时
-        let centerY = titles[i].offsetTop + titles[i].offsetHeight / 2 * 3;
+        let centerY = titles[i].offsetTop + titles[i].offsetHeight / 2 + 70 ;
         if (centerY > visibleTop && centerY < visibleBottom) {
           beWatch(titles[i].getAttribute("data-v-md-line"));
           break;

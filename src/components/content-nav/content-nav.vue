@@ -83,10 +83,11 @@ export default defineComponent({
 
 <style lang="less" scoped>
     .nav-main{
-        width:800px;
+        max-width:700px;
         height:50px;
         display:flex;
         flex-flow:row;
+        margin-left: 8px;
         .nav-label{
               width:2rem ;
         }
