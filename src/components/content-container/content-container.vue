@@ -1,11 +1,8 @@
 <template>
     <div >
-        <div >
-              <contentNav ></contentNav>
-        </div>
-       <div v-for="(item,itid) in data" :key="'content-'+itid" style="margin:2% 0;">
+       <div v-for="(item,itid) in data" :key="'content-'+itid" style="margin:1% 0;">
           <contentContainerHotpot v-if="item.type==='1'"
-          :index="itid"
+          :index="itid"   
           :status="item.status"
           :author="item.author"
           :date="item.date"
@@ -19,7 +16,7 @@
           @click="this.ReadHandle(itid)">
        </contentContainerHotpot>
        <contentContainerPassage v-if="item.type==='2'"
-          :index="itid"   
+          :index="Number(itid)"   
           :status="item.status"
           :author="item.author"
           :date="item.date"
@@ -44,18 +41,24 @@
 </template>
 <script lang="ts">
 import { defineComponent } from '@vue/runtime-core'
-import contentNav from '@/components/content-nav/content-nav.vue'
+// import contentNav from '@/components/content-nav/content-nav.vue'
 import contentContainerHotpot from './content-container-hotpot/content-container-hotpot.vue'
 import contentContainerPassage from './content-container-passage/content-container-passage.vue'
+import {login} from '../../api/index.js'
 export default defineComponent({
     name:"content-container",
     components:{
-    contentNav,
     contentContainerHotpot,
     contentContainerPassage
     },
-    setup(){
-        
+   mounted(){
+    Login(){
+        Promise.resolve(
+        login().then((res)=>{
+        console.log(res)
+    })
+    )
+    }
     },
     data(){
         // 在这里导入数据

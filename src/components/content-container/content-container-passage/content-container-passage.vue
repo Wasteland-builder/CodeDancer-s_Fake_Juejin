@@ -367,7 +367,7 @@ export default defineComponent({
                     }
                     .content-mainer-description{
                             height:40%;
-                            margin:0 2% 2% 2%;
+                            margin:0 4% 2% 2%;
                             font-size:0.8em;
                             font-weight:600;
                             color:#86909c;
@@ -404,7 +404,7 @@ export default defineComponent({
                     }
                     .content-mainer-description{
                         height:40%;
-                        margin:0 2% 2% 2%;
+                        margin:0 4% 2% 2%;
                         font-size:0.8em;
                         font-weight:600;
                         color:#86909c;
