@@ -1,6 +1,14 @@
 <template>
+<<<<<<< HEAD
     <div >
+       <div v-for="(item,itid) in data" :key="'content-'+itid" style="margin:1% 0;">
+=======
+    <div class="content">
+        <div >
+              <contentNav ></contentNav>
+        </div>
        <div v-for="(item,itid) in data" :key="'content-'+itid" style="margin:2% 0;">
+>>>>>>> e830faa0eee7ba443fc5ecc0ddb5d6a9308c43e3
           <contentContainerHotpot v-if="item.type==='1'"
           :index="itid"   
           :status="item.status"

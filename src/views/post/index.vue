@@ -70,8 +70,8 @@ import acticleCata from "../../components/post/acticleCata.vue";
 .acticleList {
   width: 200px;
   position: fixed; /*设置固定在屏幕上*/
-  right: 0px; /*固定的位置*/
-  top: 40px;
+  right: 180px; /*固定的位置*/
+  top: 80px;
   background: white;
   /* height: 400px; */
 }
