@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!--
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+    -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>掘金</title>
+    <!-- 设置网页的图标 -->
+    <link rel="icon" href="../img/favicon.ico">
+    <!-- 引入重置样式表 -->
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <!-- 引入图标字体 -->
+    <link rel="stylesheet" href="../iconfont/iconfont.css">
+    <!-- 引入CSS文件 -->
+    <link rel="stylesheet" href="../CSS/index.css">
+</head>
+
+<body>
+    <div class="top-bar-wrapper">
+        <div class="top-bar">
+            <a class="logo" href="https://juejin.cn/">
+                <img src="../img/logo.svg">
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="left-nav-list">
+                        <ul class="list">
+                            <li>
+                                <a href="https://juejin.cn/">首页</a>
+                            </li>
+                            <li>
+                                <a href="https://juejin.cn/pins">沸点</a>
+                            </li>
+                            <li>
+                                <a href="https://juejin.cn/course">课程</a>
+                            </li>
+                            <li>
+                                <a href="https://juejin.cn/live">直播</a>
+                            </li>
+                            <li>
+                                <a href="https://juejin.cn/events/all">活动</a>
+                            </li>
+                            <nav>
+                                <a href="https://detail.youzan.com/show/goods/newest?kdt_id=104340304"
+                                    target="_blank">商城</a>
+                            </nav>
+                            <nav>
+                                <a href="https://juejin.cn/app?utm_source=jj_nav" target="_blank">APP</a>
+                            </nav>
+                            <nav>
+                                <a href="https://juejin.cn/extension?utm_source=jj_nav" target="_blank">插件</a>
+                            </nav>
+                        </ul>
+                    </li>
+
+                    <ul class="right-nav-list">
+                        <li class="search-add">
+                            <ul class="search-add-ul">
+                                <li class="search">
+                                    <form action="" class="search-form">
+                                        <input type="search" maxlength="32" placeholder="探索稀土掘金" value
+                                            class="search-input">
+                                        <div class="search-icon-wrapper">
+                                            <img src="../img/search.svg" alt="搜索" class="search-icon">
+                                        </div>
+                                    </form>
+                                </li>
+
+                                <li class="creator-item">
+                                    <div class="add-group">
+                                        <button class="add-btn">创作者中心</button>
+                                        <div class="more">
+                                            <svg t="1659336157319" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                                xmlns="http://www.w3.org/2000/svg" p-id="1039" width="200" height="200">
+                                                <path
+                                                    d="M512.13578683 762.52670389l260.71071625-451.49121434H251.49296399z"
+                                                    p-id="1040"></path>
+                                            </svg>
+                                        </div>
+                                        <ul class="more-list">
+                                            <li class="item">
+                                                <span>写文章</span>
+                                            </li>
+                                            <li class="item">
+                                                <span>发沸点</span>
+                                            </li>
+                                            <li class="item">
+                                                <span>写代码</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="vip">
+                            <div class="vip-title">
+                                <img src="../img/vip.svg" alt="vip" class="vip-img">
+                                <div class="vip-word">会员</div>
+                            </div>
+                        </li>
+
+                        <li class="notice">
+                            <a href="https://juejin.cn/notification" class="notice-img">
+                                <svg t="1659336685043" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="801" width="24" height="24">
+                                    <path
+                                        d="M509.6941037 1016.86992592h6.67496297c63.83691852-0.84954075 117.35798518-46.60337778 125.36794074-107.40622222H384.32616297c8.00995555 60.80284445 61.53102222 106.67804445 125.36794073 107.40622222zM827.17961482 616.97896297V389.30204445c0.72817778-127.7952-86.04634075-239.08503703-208.98702223-267.96942223v-5.46133333c0.9709037-38.47205925-18.81125925-74.51685925-51.57925926-94.17765926-32.88936297-19.53943703-73.54595555-19.53943703-106.43531851 0s-52.55016297 55.58423703-51.57925927 94.17765926v5.46133333C285.29398518 149.97428148 198.15537778 261.38548148 198.88355555 389.30204445v227.67691852c-62.98737778 50.1229037-100.97398518 125.61066667-104.25078518 206.55976295h836.79762963c-3.15543703-80.9490963-41.26340741-156.43685925-104.25078518-206.55976295z"
+                                        fill="#B8B4B4" p-id="802"></path>
+                                </svg>
+                            </a>
+                        </li>
+
+                        <li class="user-item">
+                            <div class="user-div">
+                                <img src="https://p6-passport.byteacctimg.com/img/user-avatar/e6242a6ce1d0e3316ac462e96cd5df4f~300x300.image"
+                                    alt="succyag的头像" class="user-img">
+                            </div>
+                            <ul class="user-menu">
+
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+            </nav>
+        </div>
+
+        <nav class="top-nav">
+            <div class="nav-list">
+                <a href="https://juejin.cn/recommended" class="nav-item">
+                    <div class="box">综合</div>
+                </a>
+                <a href="https://juejin.cn/following" class="nav-item">
+                    <div class="box">关注</div>
+                </a>
+                <a href="https://juejin.cn/backend" class="nav-item">
+                    <div class="box">后端</div>
+                </a>
+                <a href="https://juejin.cn/frontend" class="nav-item">
+                    <div class="box">前端</div>
+                </a>
+                <a href="https://juejin.cn/android" class="nav-item">
+                    <div class="box">Android</div>
+                </a>
+                <a href="https://juejin.cn/ios" class="nav-item">
+                    <div class="box">iOS</div>
+                </a>
+                <a href="https://juejin.cn/ai" class="nav-item">
+                    <div class="box">人工智能</div>
+                </a>
+                <a href="https://juejin.cn/freebie" class="nav-item">
+                    <div class="box">开发工具</div>
+                </a>
+                <a href="https://juejin.cn/career" class="nav-item">
+                    <div class="box">代码人生</div>
+                </a>
+                <a href="https://juejin.cn/article" class="nav-item">
+                    <div class="box">阅读</div>
+                </a>
+                <a href="https://juejin.cn/subscribe/subscribed" class="nav-list-right nav-item">标签管理</a>
+            </div>
+        </nav>
+
+    </div>
+
+    <div class="text">
+        <div class="text-left">
+
+            <div class="text-list">
+                <a href="https://juejin.cn/" class="text-nav">
+                    <div class="box">推荐</div>
+                </a>
+                <div class="box1">|</div>
+                <a href="https://juejin.cn/?sort=newest" class="text-nav">
+                    <div class="box">最新</div>
+                </a>
+                <div class="box1">|</div>
+                <a href="https://juejin.cn/?sort=three_days_hottest" class="text-nav">
+                    <div class="box">热榜</div>
+                </a>
+            </div>
+
+
+            <div class="text-content">
+                <div class="content-left">
+                    <div class="first">
+                        <a href="https://juejin.cn/user/1556564194374926">
+                            <div class="box">掘金酱</div>
+                        </a>
+                        <div class="box1">|</div>
+                        <div class="box2">6天前</div>
+                    </div>
+                    <div class="second">
+                        <a href="https://juejin.cn/post/7125658251852513294?utm_source=feed1&utm_medium=feed&utm_campaign=creator0729"
+                            class="text-title">
+                            <div class="title">「转发、评论有🎁」创作等级&掘力值全新升级啦</div>
+                            <div class="introduce">成长体系优化，新权益解锁，掘力值计算方式升级，创作成长看得见！</div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="content-right">
+                    <div class="first">广告</div>
+                    <a
+                        href="https://juejin.cn/post/7125658251852513294?utm_source=feed1&utm_medium=feed&utm_campaign=creator0729">
+                        <img class="pic" src="http://test.imgurl.org/imgs/2022/08/03/16438db49b15a822.jpg">
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-content">
+                <div class="content-left">
+                    <div class="first">
+                        <a href="https://juejin.cn/user/1556564194374926">
+                            <div class="box">xiangzhihong</div>
+                        </a>
+                        <div class="box1">|</div>
+                        <div class="box2">1月前</div>
+                        <div class="box1">|</div>
+                        <div class="box2">前端</div>
+                    </div>
+                    <div class="second">
+                        <a href="https://juejin.cn/post/7115413271946985480" class="text-title">
+                            <div class="title">Android动态更换应用图标</div>
+                            <div class="introduce1">一、背景
+                                近日，微博官方发布了一项新功能，即可以在App设置中动态更换微博的显示图标样式。根据微博官方的说法，除了最原始的图标外，微博还推出了另外10种不同的样式，既有3D微博
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="thrid">
+                        <a href="https://juejin.cn/post/7115413271946985480">
+                            <div class="box">
+                                <img class="box1" src="https://pic.imgdb.cn/item/62ecfccb8c61dc3b8efe7b77.png" alt="">
+                                <div class="box2">7306</div>
+                            </div>
+                        </a>
+
+                        <a href="https://juejin.cn/post/7115413271946985480">
+                            <div class="twbox">
+                                <img class="twbox1" src="https://pic.imgdb.cn/item/62ed3b648c61dc3b8e109bce.png" alt="">
+                                <div class="twbox2">45</div>
+                            </div>
+                        </a>
+
+                        <a href="https://juejin.cn/post/7115413271946985480">
+                            <div class="thbox">
+                                <img class="thbox1" src="https://pic.imgdb.cn/item/62ed3e9c8c61dc3b8e1d5a37.png" alt="">
+                                <div class="thbox2">19</div>
+                            </div>
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="text-content">
+                <div class="content-left">
+                    <div class="first">
+                        <a href="https://juejin.cn/user/1767670430575607">
+                            <div class="box">Augus</div>
+                        </a>
+                        <div class="box1">|</div>
+                        <div class="box2">1小时前</div>
+                        <div class="box1">|</div>
+                        <div class="box2">前端</div>
+                    </div>
+
+                    <div class="second">
+                        <a href="https://juejin.cn/post/7125658251852513294?utm_source=feed1&utm_medium=feed&utm_campaign=creator0729"
+                            class="text-title">
+                            <div class="title">Chrome操作指南——入门篇（五）Snippets</div>
+                            <div class="introduce">有时候我们浏览一个壁纸网站的时候，可能我们想把这个页面的图片地址全都扒过来，可能你会下载一个工具，</div>
+                        </a>
+                    </div>
+
+                    <div class="thrid">
+                        <a href="https://juejin.cn/post/7115413271946985480">
+                            <div class="box">
+                                <img class="box1" src="https://pic.imgdb.cn/item/62ecfccb8c61dc3b8efe7b77.png" alt="">
+                                <div class="box2">155</div>
+                            </div>
+                        </a>
+
+                        <a href="https://juejin.cn/post/7115413271946985480">
+                            <div class="twbox">
+                                <img class="twbox1" src="https://pic.imgdb.cn/item/62ed3b648c61dc3b8e109bce.png" alt="">
+                                <div class="twbox2">点赞</div>
+                            </div>
+                        </a>
+
+                        <a href="https://juejin.cn/post/7115413271946985480">
+                            <div class="thbox">
+                                <img class="thbox1" src="https://pic.imgdb.cn/item/62ed3e9c8c61dc3b8e1d5a37.png" alt="">
+                                <div class="thbox2">评论</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="content-right">
+                    <a href="https://juejin.cn/post/7128407387156774943">
+                        <img class="pic" src="https://pic.imgdb.cn/item/62ed43848c61dc3b8e2f8a04.png">
+                    </a>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="text-right">
+            <div class="block1">
+                <div class="first">
+                    <img class="left" src="https://pic.imgdb.cn/item/62ed4bba8c61dc3b8e49cd76.png" alt="">
+                    <div class="center">晚上好！ </div>
+                    <a href="https://juejin.cn/user/center/signin?from=main_page">
+                        <div class="right">去签到</div>
+                    </a>
+                </div>
+                <div class="second">点亮你在社区的每一天</div>
+            </div>
+
+            <div class="block2">
+                <a
+                    href="https://juejin.cn/post/7123120819437322247?utm_source=web&utm_medium=banner&utm_campaign=gengwen202208">
+                    <div class="pic-text">
+                        <img class="pic" src="https://pic.imgdb.cn/item/62ee523816f2c2beb1d7202a.png">
+                        <div class="wenben">广告</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="block3">
+                <a
+                    href="https://juejin.cn/post/7120441631530549284?utm_source=web&utm_medium=banner&utm_campaign=cykf202207">
+                    <div class="pic-text">
+                        <img class="pic" src="https://pic.imgdb.cn/item/62ee581b16f2c2beb1ef6250.png">
+                        <div class="wenben">广告</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="block4">
+                <a href="https://juejin.cn/app">
+                    <div class="show">
+                        <img class="pic" src="https://pic.imgdb.cn/item/6301d9d316f2c2beb14f1728.png">
+                        <div class="right">
+                            <div class="first">下载稀土掘金App</div>
+                            <div class="second">一个帮助开发者成长的社区</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="block5">
+                <div class="first">
+                    <img class="pic" src="https://pic.imgdb.cn/item/6301deeb16f2c2beb15159ec.png">
+                    <div class="wenben">作者榜</div>
+                </div>
+
+
+                <div class="second">
+                    <a href="https://juejin.cn/user/2189882892232029">
+                        <div class="one">
+                            <img class="pic" src="https://pic.imgdb.cn/item/6301e43316f2c2beb153f0b2.jpg">
+                            <div class="right">
+                                <div class="right-one">
+                                    <div class="name">王中阳Go</div>
+                                    <img class="pic1" src="https://pic.imgdb.cn/item/6301e7fd16f2c2beb15656c6.png">
+
+                                </div>
+                                <div class="right-two">Golang</div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://juejin.cn/user/2189882892232029">
+                        <div class="one">
+                            <img class="pic" src="https://pic.imgdb.cn/item/6301e43316f2c2beb153f0b2.jpg">
+                            <div class="right">
+                                <div class="right-one">
+                                    <div class="name">王中阳Go</div>
+                                    <img class="pic1" src="https://pic.imgdb.cn/item/6301e7fd16f2c2beb15656c6.png">
+                                </div>
+                                <div class="right-two">Golang</div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://juejin.cn/user/2189882892232029">
+                        <div class="one">
+                            <img class="pic" src="https://pic.imgdb.cn/item/6301e43316f2c2beb153f0b2.jpg">
+                            <div class="right">
+                                <div class="right-one">
+                                    <div class="name">王中阳Go</div>
+                                    <img class="pic1" src="https://pic.imgdb.cn/item/6301e7fd16f2c2beb15656c6.png">
+                                </div>
+                                <div class="right-two">Golang</div>
+                            </div>
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+                <div class="third">
+                    <a href=" https://juejin.cn/recommendation/authors/recommended">
+                        <div class="wenben">
+                            <div class="one">完整榜单</div>
+                            <div class="two">></div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="block6">
+
+                <a href="https://juejin.cn/book/6844733795329900551">
+                    <div class="one">
+                        <img class="pic" src="https://pic.imgdb.cn/item/6301f02916f2c2beb15a2242.png">
+                        <div class="right">稀土掘金漫游指南</div>
+                    </div>
+                </a>
+
+                <a href="https://juejin.cn/extension">
+                    <div class="one">
+                        <img class="pic" src="https://pic.imgdb.cn/item/6301f28516f2c2beb15b7597.png">
+                        <div class="right">安装掘金浏览器插件</div>
+                    </div>
+                </a>
+
+                <a href="https://github.com/xitu/gold-miner">
+                    <div class="one">
+                        <img class="pic" src="https://pic.imgdb.cn/item/6301f29516f2c2beb15b7dd1.png">
+                        <div class="right">前往掘金翻译计划</div>
+                    </div>
+                </a>
+
+
+
+            </div>
+
+            <div class="block7">
+                <div class="one">
+                    <a
+                        href="https://lf3-cdn-tos.draftstatic.com/obj/ies-hotsoon-draft/juejin/86857833-55f6-4d9e-9897-45cfe9a42be4.html">
+                        <div class="wen">用户协议</div>
+                    </a>
+
+                    <a href="https://juejin.cn/license">
+                        <div class="wen">营业执照</div>
+                    </a>
+
+                    <a
+                        href="https://lf3-cdn-tos.draftstatic.com/obj/ies-hotsoon-draft/juejin/7b28b328-1ae4-4781-8d46-430fef1b872e.html">
+                        <div class="wen">隐私政策</div>
+                    </a>
+
+                    <a href="https://juejin.cn/about">
+                        <div class="wen">关于我们</div>
+                    </a>
+                </div>
+
+                <div class="one">
+                    <a href="https://juejin.cn/map-author-A-1">
+                        <div class="wen">站点地图</div>
+                    </a>
+
+                    <a href="https://juejin.cn/book/6844733795329900551">
+                        <div class="wen">使用指南</div>
+                    </a>
+
+                    <a href="https://juejin.cn/links">
+                        <div class="wen">友情链接</div>
+                    </a>
+
+                    <a href="https://juejin.cn/more_posts">
+                        <div class="wen">更多文章</div>
+                    </a>
+                </div>
+
+                <div class="one">
+                    <a href="https://beian.miit.gov.cn/">
+                        <div class="wen">京ICP备18012699号-3</div>
+                    </a>
+                </div>
+
+
+                <div class="two">
+                    <div class="whole">
+                        <img class="pic" src="https://pic.imgdb.cn/item/6301f83116f2c2beb15ed396.png">
+                        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802026719">
+                            <div class="wen">京公网安备11010802026719号</div>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="three">
+                    <div class="wen">版权所有：北京北比信息技术有限公司</div>
+                    <div class="wen">公司地址：北京市海淀区信息路甲28号13层B座13B-5</div>
+                    <div class="wen">公司座机：010-83434395</div>
+                    <div class="wen1">
+                        <div class="one">举报邮箱：</div>
+                        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802026719">
+                            <div class="two"> feedback@xitu.io</div>
+                        </a>
+                    </div>
+
+                </div>
+
+
+
+                <div class="one">
+                    <a>
+                        <div class="wen">©2022 稀土掘金</div>
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="block8">
+
+                <div class="whole">
+                    <a href="https://weibo.com/xitucircle?is_hot=1">
+                        <img class="pic" src="https://pic.imgdb.cn/item/6301ff5416f2c2beb1620f59.png">
+                    </a>
+                    <img class="pic" src="https://pic.imgdb.cn/item/6301ff6c16f2c2beb162188f.png">
+                    </a>
+
+
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+       
+
+    </div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
