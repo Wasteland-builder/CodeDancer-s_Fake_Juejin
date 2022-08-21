@@ -26,7 +26,8 @@ import Checkin from '@/components/checkin/checkin.vue';
 
   .left {
     width: 700px;
-    height: 100%;
+    // height: 100%;
+    height: 2000px;
   }
 
   .right {

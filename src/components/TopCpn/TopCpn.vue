@@ -1,6 +1,6 @@
 <template>
   <!-- 最顶部的导航栏 -->
-  <div class="wrapper">
+  <div :class="{ 'wrapper': true, 'wrapper-visible': visible }">
     <div class="top-bar">
       <router-link class="logo" to="/">
         <img src="../../assets/logo.svg">
@@ -10,10 +10,8 @@
         <div class="nav-list">
           <div class="left-nav-list">
             <ul class="list">
-              <li v-for="(item, index) in navList"
-                 :key="index"
-                >
-                <router-link :to="item.to" >{{item.text}}</router-link>
+              <li v-for="(item, index) in navList" :key="index">
+                <router-link :to="item.to">{{ item.text }}</router-link>
               </li>
               <nav>
                 <a href="https://detail.youzan.com/show/goods/newest?kdt_id=104340304" target="_blank">商城</a>
@@ -106,11 +104,12 @@
 </template>
 
 <script>
-import {ref} from 'vue'
+import { ref, onMounted } from 'vue'
 export default {
   name: "TopCpn",
   props: ['currentIndex'],
   setup() {
+    let visible = ref(false)
     const navList = [
       { text: '首页', to: '/' },
       { text: '沸点', to: '/hot' },
@@ -118,25 +117,33 @@ export default {
       { text: '直播', to: '/live' },
       { text: '活动', to: '/events' },
     ]
-    // let currentIndex = ref(0)
-    // const handleItemColor = (index) => {
-    //   currentIndex = index
-    //   console.log(index)
-    //   console.log(currentIndex)
-    // }
+    const showSearch = () => {
+      let scrollTop = ref(document.body.scrollTop)
+      console.log(scrollTop)
+      if (scrollTop > 3000) {   // 当页面滚动到高度300px处，动态绑定class 来设置头部固定定位
+        visible = true;
+      } else {
+        visible = false;
+      }
+    }
+    onMounted(() => {
+      window.addEventListener("scroll", showSearch)
+      // console.log(1111)
+    })
     return {
       navList,
-      // currentIndex,
-      // handleItemColor
+      visible
     }
   }
 }
 </script>
 
 <style scoped lang="less">
-.router--active, .router-link-exact-active {
+.router--active,
+.router-link-exact-active {
   color: #1e80ff !important;
 }
+
 .wrapper {
   background-color: white;
   border-bottom: 1px solid #f1f1f1;
@@ -197,7 +204,7 @@ export default {
           list-style-type: circle;
 
           .item-active {
-            color: #1e80ff  
+            color: #1e80ff
           }
 
           li,
@@ -533,5 +540,9 @@ export default {
       }
     }
   }
+}
+
+.wrapper-visible {
+  display: none;
 }
 </style>
