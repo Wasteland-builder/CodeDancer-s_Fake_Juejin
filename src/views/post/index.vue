@@ -1,11 +1,15 @@
 <template>
   <!-- 文章主体部分 -->
   <div class="container">
-    <post-body :acticleMessage="acticleMessage"></post-body>
-  </div>
-  <!-- 右侧工具栏部分 -->
-  <div class="acticleList">
-    <acticle-cata></acticle-cata>
+    <div class="postBodybox">
+      <post-body :acticleMessage="acticleMessage"></post-body>
+    </div>
+    <!-- 右侧工具栏部分 -->
+    <div class="acticleList">
+      <cancel-img></cancel-img>
+      <download-app></download-app>
+      <acticle-cata></acticle-cata>
+    </div>
   </div>
 </template>
 
@@ -56,6 +60,8 @@ let acticleMessage = ref({
 });
 
 import acticleCata from "../../components/post/acticleCata.vue";
+import CancelImg from "../../components/RightCpn/CancelImg.vue";
+import DownloadApp from "../../components/RightCpn/DownloadApp.vue"
 </script>
 
 <style scoped>
@@ -64,15 +70,13 @@ import acticleCata from "../../components/post/acticleCata.vue";
   max-width: 1140px;
   position: relative;
   margin: 0 auto;
-  /* background: #fff; */
-  height: 0px;
+  display: flex;
+}
+.postBodybox{
 }
 .acticleList {
   width: 200px;
-  position: fixed; /*设置固定在屏幕上*/
-  right: 180px; /*固定的位置*/
-  top: 80px;
-  background: white;
-  /* height: 400px; */
+  /* margin-top: 20px; */
+  margin-left: 20px;
 }
 </style>  

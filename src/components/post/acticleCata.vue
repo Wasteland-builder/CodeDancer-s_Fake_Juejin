@@ -5,7 +5,7 @@
       :key="index"
       class="cataSon"
       :class="[{ 'cataSon-active': index == 1 }]"
-      :data-v-md-line = "item.lineIndex"
+      :data-v-md-line="item.lineIndex"
       @click="handleAnchorClick(item.lineIndex)"
       ref="cata"
     >
@@ -27,26 +27,29 @@ Mitt.on("tranList", getList);
 
 // 更变样式
 const changeClass = (item) => {
-  for(let i in cata.value){
+  for (let i in cata.value) {
     cata.value[i].classList.remove("cataSon-active");
-    if(cata.value[i].getAttribute("data-v-md-line") == item){
+    if (cata.value[i].getAttribute("data-v-md-line") == item) {
       cata.value[i].classList.add("cataSon-active");
     }
   }
-}
+};
 
 const handleAnchorClick = (item) => {
   // 发出跳转
-  Mitt.emit("scrollTo" , item);
+  Mitt.emit("scrollTo", item);
   // changeClass(item);
 };
 
 // 监听滚动并且更变
 const beWatch = (lineIndex) => {
   changeClass(lineIndex);
-}
-Mitt.on("beWatch" , beWatch);
+};
+Mitt.on("beWatch", beWatch);
 
+nextTick(() => {
+  
+});
 </script>
 
 <style scoped>
@@ -54,8 +57,10 @@ Mitt.on("beWatch" , beWatch);
   padding: 0 0 0 11px;
   position: relative;
   max-height: 460px;
+  width: 240px;
   margin: 8px 4px 0 0;
   overflow: auto;
+  background: white;
 }
 
 .cataSon {
