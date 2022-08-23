@@ -1,6 +1,10 @@
 <template>
   <!-- 文章主体部分 -->
   <div class="container">
+    <!-- 左侧点赞部分 -->
+    <div class="asideBox">
+        <aside-label></aside-label>
+    </div>
     <div class="postBodybox">
       <post-body :acticleMessage="acticleMessage"></post-body>
     </div>
@@ -61,7 +65,8 @@ let acticleMessage = ref({
 
 import acticleCata from "../../components/post/acticleCata.vue";
 import CancelImg from "../../components/RightCpn/CancelImg.vue";
-import DownloadApp from "../../components/RightCpn/DownloadApp.vue"
+import DownloadApp from "../../components/RightCpn/DownloadApp.vue";
+import asideLabel from "../../components/aside-label/aside-label.vue"
 </script>
 
 <style scoped>
@@ -72,11 +77,14 @@ import DownloadApp from "../../components/RightCpn/DownloadApp.vue"
   margin: 0 auto;
   display: flex;
 }
-.postBodybox{
-}
 .acticleList {
   width: 200px;
   /* margin-top: 20px; */
   margin-left: 20px;
+}
+.asideBox{
+  width: 100px;
+  margin-left: -100px;
+  margin-top: 20px;
 }
 </style>  
