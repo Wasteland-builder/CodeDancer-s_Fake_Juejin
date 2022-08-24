@@ -2,7 +2,8 @@
         <div class="list-aside-reporting">
             <div class="list-aside-border">
                 <div :class="this.listTimesCss" v-if="this.propsStateCheck()">{{this.data.thumbUpTime}}</div>
-                    <thumbUpIcon :class="this.listIconCss"/>
+                    <thumbUpIcon :class="this.listIconCss" @click="
+             this.thumbUpActive = !this.thumbUpActive;"/>
             </div>
         </div>
 </template>
@@ -59,7 +60,7 @@ export default defineComponent({
     methods:{
        propsStateCheck(){
             if (this.thumbUpTimes === 0){
-                this.listIconCss="list-aside-iconsvg-none",
+                this.listIconCss="list-aside-iconsvg-none"
                 this.listTimesCss="list-aside-align-top"
                 return false
             }
@@ -68,9 +69,11 @@ export default defineComponent({
             this.listTimesCss="list-aside-align-top-active"
             return true
            }
-           this.listIconCss="list-aside-iconsvg"
+           else if(!this.thumbUpActive){
+            this.listIconCss="list-aside-iconsvg"
            this.listTimesCss="list-aside-align-top"
            return true
+           }
         }
     }
 })
@@ -94,7 +97,6 @@ export default defineComponent({
             width:1.5rem;
             height:1.5rem;
             fill: #8a919f;
-    
         }
         .list-aside-iconsvg-none:hover {
              padding: 25% 30% 25% 30%;
@@ -139,7 +141,7 @@ export default defineComponent({
              float:left
             }
         .list-aside-align-top-active{
-            background:#1e80ff;
+            background-color:#1e80ff;
             color:#f4f5f5;
             width:1.5rem;
             height: 1.5rem;

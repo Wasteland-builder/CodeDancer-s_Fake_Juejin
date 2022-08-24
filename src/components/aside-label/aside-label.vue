@@ -10,11 +10,12 @@
                     <shareActivePanel class="panel-item"/>
                     <hr class="panel-col"/>
                     <reportPanel class="panel-item"
-                                 :index="this.data.id"/>
+                                 :index="this.data.id"
+                                 />
                   <stickPanel class="panel-item"/>
             </div>
             <div class="active-panel-wrapper">
-              
+                        
             </div>
     </div> 
 </template>

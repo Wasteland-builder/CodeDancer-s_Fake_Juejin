@@ -78,6 +78,9 @@ export default ({
       }
     },
     methods:{
+       ReportHandle (){
+         this.dialogVisible= false;
+     }, 
       activeHandle(status){
          this.dialogVisible=status
         },

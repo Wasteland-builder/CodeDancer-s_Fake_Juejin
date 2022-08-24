@@ -186,20 +186,14 @@ export default defineComponent({
                     this.data[id].status='2';
                     break;
                 }
-                //  case '2' :{
-                //     this.data[id].spottimes=e+1;
-                //     break;
-                // }
                  case '3' :{
                     this.data[id].spottimes=e+1;
                     this.data[id].status='4';
                     break;
                 }
-                //  case '4' :{
-                //     this.data[id].spottimes=e+1;
-                //     break;
-                // }
+             
                }
+            this.$router.push('/post/'+id);
         }      
     }
 }
