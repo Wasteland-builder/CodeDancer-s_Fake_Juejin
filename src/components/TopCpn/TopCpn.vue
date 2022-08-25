@@ -69,7 +69,7 @@
               </div>
             </div>
 
-            <template v-if="true">
+            <template v-if="false">
               <div class="notice">
                 <a href="https://juejin.cn/notification" class="notice-img">
                   <svg t="1659336685043" class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -93,7 +93,7 @@
             </template>
             <template v-else>
               <div>
-                <button>登录</button>
+                <el-button>登录</el-button>
               </div>
             </template>
           </div>
@@ -544,5 +544,10 @@ export default {
 
 .wrapper-visible {
   display: none;
+}
+
+.el-button {
+  color: #1e80ff !important;
+  border: 1px solid #1e80ff;
 }
 </style>
