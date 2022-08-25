@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const requests = axios.create({
-    baseURL: "https://mock.apifox.cn/m1/1363590-0-default",
+    baseURL: "http://81.68.212.237",
     timeout: 5000
 })
 

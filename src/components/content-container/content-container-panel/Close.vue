@@ -40,11 +40,11 @@
                    </el-affix>  
                 </template>
         </el-popover> 
-
+    <!-- :before-close="handleClose" -->
             <el-dialog
                 v-model="this.Active.BanUser"
                 width="40%"
-                :before-close="handleClose"
+                
                 >
                <p style="font-size:1.5rem;text-align:center"> <span>确定屏蔽 </span><span  style="font-size:1.5rem;text-align:center;color:#ff8350">{{this.author}}</span><span>吗？ </span></p>
                 <p  style="font-size:1.5rem;text-align:center"> 首页推荐中将不再展示该作者文章 </p>
@@ -54,7 +54,7 @@
                     <el-button  style="width:30%;margin:0% 10%" type="primary" @click="this.BanUserHandle()">确 定</el-button>
                 </div>
                 </el-dialog>
-                <Reporting :index="this.index" :active="this.Active.Report"/>
+                <Reporting :index="this.data.index" :active="this.Active.Report"/>
       </div>            
 </template>
 <script >
@@ -88,19 +88,19 @@ export default defineComponent({
         id:{
             deep:true,
             handler(news){
-                this.index=news;
+                this.data.index=news;
             }
         },
          author:{
             deep:true,
             handler(news){
-                this.author=news;
+                this.data.author=news;
             }
         },
         target:{
             deep:true,
             handler(news){
-                this.targetData=news;
+                this.data.targetData=news;
             }
         }
 
@@ -115,10 +115,12 @@ export default defineComponent({
     },
     data(){
         return{
+           data:{
             index:this.index,
-            author:this.author,
-            LabelBoxHeight:'',
+            author:this.author, 
             targetData:this.target,
+           }, 
+            LabelBoxHeight:'',
             Active:{
                 Boring:false,
                 BanUser:false,
@@ -128,15 +130,6 @@ export default defineComponent({
         }
     },
     methods:{
-     propsStateCheck(){
-   
-             this.listIconCss ="content-container-iconsvg"
-             this.listTimesCss ="content-container-content" 
-            if(this.commentTime === 0){
-                return false
-            }   
-            else   return true
-        },
       BoringHandle (){
        ElMessage.success({
             message: '将减少此类内容推荐',
@@ -167,7 +160,7 @@ export default defineComponent({
             this.Active.BanLabel= true;
             this.LabelBoxHeight='300';
          }
-          console.log(this.Active.BanLabel)
+        //   console.log(this.Active.BanLabel)
      },
      ReportHandle (){
          this.Active.Report= false;

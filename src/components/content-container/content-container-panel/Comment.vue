@@ -72,8 +72,8 @@ export default defineComponent({
             margin:0 auto;
             padding:0 10% 24% 2%;
             vertical-align: middle;
-            width:2rem;
-            height:2rem;
+            width:1.5rem;
+            height:1.5rem;
             fill: #8a919f;
             float:left
         }
@@ -81,8 +81,8 @@ export default defineComponent({
             margin:0 auto;
             padding:0 10% 24% 2%;
             vertical-align: middle;
-            width:2rem;
-            height:2rem;
+            width:1.5rem;
+            height:1.5rem;
             fill: #1e80ff;
             float:left
         }
@@ -90,8 +90,8 @@ export default defineComponent({
             margin:0 auto;
             padding:0 10% 24% 2%;
             vertical-align: middle;
-            width:2rem;
-            height:2rem;
+            width:1.5rem;
+            height:1.5rem;
             fill: #1e80ff;
             float:left
             } 
@@ -99,8 +99,8 @@ export default defineComponent({
             margin:0 auto;
             padding:0 10% 24% 2%;
             vertical-align: middle;
-            width:2rem;
-            height:2rem;
+            width:1.5rem;
+            height:1.5rem;
             color: #8a919f;
             float:left
         }
@@ -108,8 +108,8 @@ export default defineComponent({
             margin:0 auto;
               padding:0 10% 24% 2%;
             vertical-align: middle;
-            width:2rem;
-            height:2rem;
+            width:1.5rem;
+            height:1.5rem;
             color: #1e80ff;
              float:left
             }

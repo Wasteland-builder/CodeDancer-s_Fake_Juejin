@@ -1,5 +1,6 @@
 <template>
-  <type-nav style="position:absolute"></type-nav>
+  <!-- <type-nav style="position:absolute"></type-nav> -->
+    <type-nav ></type-nav>
 </template>
 
 <script>

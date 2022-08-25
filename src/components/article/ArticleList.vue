@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="left">
-      <ContentContainer></ContentContainer>
+      <ContentNav></ContentNav>
     </div>
     <div class="right">
       <Checkin> </Checkin>
@@ -12,10 +12,11 @@
 </template>
 
 <script setup>
-import CancelImg from '../right-cpn/CancelImg.vue';
-import DownloadApp from '../right-cpn/DownloadApp.vue';
-import ContentContainer from '@/components/content-container/content-container.vue';
-import Checkin from '@/components/checkin/checkin.vue';
+import CancelImg from '../RightCpn/CancelImg.vue'
+import DownloadApp from '../RightCpn/DownloadApp.vue'
+import ContentNav from '@/components/content-nav/content-nav.vue'
+import Checkin from '@/components/checkin/checkin.vue'
+
 </script>
 <style scoped lang="less">
 .container {
